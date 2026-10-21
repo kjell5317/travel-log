@@ -1,0 +1,3778 @@
+[
+ {
+  "code": "AF",
+  "name": "Afghanistan",
+  "continent": "AS",
+  "ccn3": "004",
+  "un": true,
+  "observer": false,
+  "flag": "🇦🇫",
+  "lat": 33,
+  "lon": 65,
+  "alt": [
+   "Islamic Republic of Afghanistan",
+   "Afġānistān"
+  ]
+ },
+ {
+  "code": "AL",
+  "name": "Albania",
+  "continent": "EU",
+  "ccn3": "008",
+  "un": true,
+  "observer": false,
+  "flag": "🇦🇱",
+  "lat": 41,
+  "lon": 20,
+  "alt": [
+   "Republic of Albania",
+   "Shqipëri",
+   "Shqipëria",
+   "Shqipnia"
+  ]
+ },
+ {
+  "code": "DZ",
+  "name": "Algeria",
+  "continent": "AF",
+  "ccn3": "012",
+  "un": true,
+  "observer": false,
+  "flag": "🇩🇿",
+  "lat": 28,
+  "lon": 3,
+  "alt": [
+   "People's Democratic Republic of Algeria",
+   "Dzayer",
+   "Algérie"
+  ]
+ },
+ {
+  "code": "AS",
+  "name": "American Samoa",
+  "continent": "OC",
+  "ccn3": "016",
+  "un": false,
+  "observer": false,
+  "flag": "🇦🇸",
+  "lat": -14.3333,
+  "lon": -170,
+  "alt": [
+   "Amerika Sāmoa",
+   "Amelika Sāmoa",
+   "Sāmoa Amelika"
+  ]
+ },
+ {
+  "code": "AD",
+  "name": "Andorra",
+  "continent": "EU",
+  "ccn3": "020",
+  "un": true,
+  "observer": false,
+  "flag": "🇦🇩",
+  "lat": 42.5,
+  "lon": 1.5,
+  "alt": [
+   "Principality of Andorra",
+   "Principat d'Andorra"
+  ]
+ },
+ {
+  "code": "AO",
+  "name": "Angola",
+  "continent": "AF",
+  "ccn3": "024",
+  "un": true,
+  "observer": false,
+  "flag": "🇦🇴",
+  "lat": -12.5,
+  "lon": 18.5,
+  "alt": [
+   "Republic of Angola",
+   "República de Angola",
+   "ʁɛpublika de an'ɡɔla"
+  ]
+ },
+ {
+  "code": "AI",
+  "name": "Anguilla",
+  "continent": "NA",
+  "ccn3": "660",
+  "un": false,
+  "observer": false,
+  "flag": "🇦🇮",
+  "lat": 18.25,
+  "lon": -63.1667,
+  "alt": []
+ },
+ {
+  "code": "AQ",
+  "name": "Antarctica",
+  "continent": "AN",
+  "ccn3": "010",
+  "un": false,
+  "observer": false,
+  "flag": "🇦🇶",
+  "lat": -90,
+  "lon": 0,
+  "alt": []
+ },
+ {
+  "code": "AG",
+  "name": "Antigua and Barbuda",
+  "continent": "NA",
+  "ccn3": "028",
+  "un": true,
+  "observer": false,
+  "flag": "🇦🇬",
+  "lat": 17.05,
+  "lon": -61.8,
+  "alt": []
+ },
+ {
+  "code": "AR",
+  "name": "Argentina",
+  "continent": "SA",
+  "ccn3": "032",
+  "un": true,
+  "observer": false,
+  "flag": "🇦🇷",
+  "lat": -34,
+  "lon": -64,
+  "alt": [
+   "Argentine Republic",
+   "República Argentina"
+  ]
+ },
+ {
+  "code": "AM",
+  "name": "Armenia",
+  "continent": "AS",
+  "ccn3": "051",
+  "un": true,
+  "observer": false,
+  "flag": "🇦🇲",
+  "lat": 40,
+  "lon": 45,
+  "alt": [
+   "Republic of Armenia",
+   "Hayastan",
+   "Հայաստանի Հանրապետություն"
+  ]
+ },
+ {
+  "code": "AW",
+  "name": "Aruba",
+  "continent": "NA",
+  "ccn3": "533",
+  "un": false,
+  "observer": false,
+  "flag": "🇦🇼",
+  "lat": 12.5,
+  "lon": -69.9667,
+  "alt": []
+ },
+ {
+  "code": "AU",
+  "name": "Australia",
+  "continent": "OC",
+  "ccn3": "036",
+  "un": true,
+  "observer": false,
+  "flag": "🇦🇺",
+  "lat": -27,
+  "lon": 133,
+  "alt": [
+   "Commonwealth of Australia"
+  ]
+ },
+ {
+  "code": "AT",
+  "name": "Austria",
+  "continent": "EU",
+  "ccn3": "040",
+  "un": true,
+  "observer": false,
+  "flag": "🇦🇹",
+  "lat": 47.3333,
+  "lon": 13.3333,
+  "alt": [
+   "Republic of Austria",
+   "Osterreich",
+   "Oesterreich"
+  ]
+ },
+ {
+  "code": "AZ",
+  "name": "Azerbaijan",
+  "continent": "AS",
+  "ccn3": "031",
+  "un": true,
+  "observer": false,
+  "flag": "🇦🇿",
+  "lat": 40.5,
+  "lon": 47.5,
+  "alt": [
+   "Republic of Azerbaijan",
+   "Azərbaycan Respublikası"
+  ]
+ },
+ {
+  "code": "BS",
+  "name": "Bahamas",
+  "continent": "NA",
+  "ccn3": "044",
+  "un": true,
+  "observer": false,
+  "flag": "🇧🇸",
+  "lat": 24.25,
+  "lon": -76,
+  "alt": [
+   "Commonwealth of the Bahamas"
+  ]
+ },
+ {
+  "code": "BH",
+  "name": "Bahrain",
+  "continent": "AS",
+  "ccn3": "048",
+  "un": true,
+  "observer": false,
+  "flag": "🇧🇭",
+  "lat": 26,
+  "lon": 50.55,
+  "alt": [
+   "Kingdom of Bahrain",
+   "Mamlakat al-Baḥrayn"
+  ]
+ },
+ {
+  "code": "BD",
+  "name": "Bangladesh",
+  "continent": "AS",
+  "ccn3": "050",
+  "un": true,
+  "observer": false,
+  "flag": "🇧🇩",
+  "lat": 24,
+  "lon": 90,
+  "alt": [
+   "People's Republic of Bangladesh",
+   "Gônôprôjatôntri Bangladesh"
+  ]
+ },
+ {
+  "code": "BB",
+  "name": "Barbados",
+  "continent": "NA",
+  "ccn3": "052",
+  "un": true,
+  "observer": false,
+  "flag": "🇧🇧",
+  "lat": 13.1667,
+  "lon": -59.5333,
+  "alt": []
+ },
+ {
+  "code": "BY",
+  "name": "Belarus",
+  "continent": "EU",
+  "ccn3": "112",
+  "un": true,
+  "observer": false,
+  "flag": "🇧🇾",
+  "lat": 53,
+  "lon": 28,
+  "alt": [
+   "Republic of Belarus",
+   "Bielaruś",
+   "Белоруссия",
+   "Республика Белоруссия"
+  ]
+ },
+ {
+  "code": "BE",
+  "name": "Belgium",
+  "continent": "EU",
+  "ccn3": "056",
+  "un": true,
+  "observer": false,
+  "flag": "🇧🇪",
+  "lat": 50.8333,
+  "lon": 4,
+  "alt": [
+   "Kingdom of Belgium",
+   "België",
+   "Belgie",
+   "Belgien",
+   "Belgique",
+   "Koninkrijk België",
+   "Royaume de Belgique",
+   "Königreich Belgien"
+  ]
+ },
+ {
+  "code": "BZ",
+  "name": "Belize",
+  "continent": "NA",
+  "ccn3": "084",
+  "un": true,
+  "observer": false,
+  "flag": "🇧🇿",
+  "lat": 17.25,
+  "lon": -88.75,
+  "alt": []
+ },
+ {
+  "code": "BJ",
+  "name": "Benin",
+  "continent": "AF",
+  "ccn3": "204",
+  "un": true,
+  "observer": false,
+  "flag": "🇧🇯",
+  "lat": 9.5,
+  "lon": 2.25,
+  "alt": [
+   "Republic of Benin",
+   "République du Bénin"
+  ]
+ },
+ {
+  "code": "BM",
+  "name": "Bermuda",
+  "continent": "NA",
+  "ccn3": "060",
+  "un": false,
+  "observer": false,
+  "flag": "🇧🇲",
+  "lat": 32.3333,
+  "lon": -64.75,
+  "alt": [
+   "The Islands of Bermuda",
+   "The Bermudas",
+   "Somers Isles"
+  ]
+ },
+ {
+  "code": "BT",
+  "name": "Bhutan",
+  "continent": "AS",
+  "ccn3": "064",
+  "un": true,
+  "observer": false,
+  "flag": "🇧🇹",
+  "lat": 27.5,
+  "lon": 90.5,
+  "alt": [
+   "Kingdom of Bhutan"
+  ]
+ },
+ {
+  "code": "BO",
+  "name": "Bolivia",
+  "continent": "SA",
+  "ccn3": "068",
+  "un": true,
+  "observer": false,
+  "flag": "🇧🇴",
+  "lat": -17,
+  "lon": -65,
+  "alt": [
+   "Plurinational State of Bolivia",
+   "Buliwya",
+   "Wuliwya",
+   "Bolivia, Plurinational State of",
+   "Estado Plurinacional de Bolivia",
+   "Buliwya Mamallaqta",
+   "Wuliwya Suyu",
+   "Tetã Volívia"
+  ]
+ },
+ {
+  "code": "BA",
+  "name": "Bosnia and Herzegovina",
+  "continent": "EU",
+  "ccn3": "070",
+  "un": true,
+  "observer": false,
+  "flag": "🇧🇦",
+  "lat": 44,
+  "lon": 18,
+  "alt": [
+   "Bosnia-Herzegovina",
+   "Босна и Херцеговина"
+  ]
+ },
+ {
+  "code": "BW",
+  "name": "Botswana",
+  "continent": "AF",
+  "ccn3": "072",
+  "un": true,
+  "observer": false,
+  "flag": "🇧🇼",
+  "lat": -22,
+  "lon": 24,
+  "alt": [
+   "Republic of Botswana",
+   "Lefatshe la Botswana"
+  ]
+ },
+ {
+  "code": "BR",
+  "name": "Brazil",
+  "continent": "SA",
+  "ccn3": "076",
+  "un": true,
+  "observer": false,
+  "flag": "🇧🇷",
+  "lat": -10,
+  "lon": -55,
+  "alt": [
+   "Federative Republic of Brazil",
+   "Brasil",
+   "República Federativa do Brasil"
+  ]
+ },
+ {
+  "code": "IO",
+  "name": "British Indian Ocean Territory",
+  "continent": "AS",
+  "ccn3": "086",
+  "un": false,
+  "observer": false,
+  "flag": "🇮🇴",
+  "lat": -6,
+  "lon": 71.5,
+  "alt": []
+ },
+ {
+  "code": "VG",
+  "name": "British Virgin Islands",
+  "continent": "NA",
+  "ccn3": "092",
+  "un": false,
+  "observer": false,
+  "flag": "🇻🇬",
+  "lat": 18.4314,
+  "lon": -64.6231,
+  "alt": [
+   "Virgin Islands",
+   "Virgin Islands, British"
+  ]
+ },
+ {
+  "code": "BN",
+  "name": "Brunei",
+  "continent": "AS",
+  "ccn3": "096",
+  "un": true,
+  "observer": false,
+  "flag": "🇧🇳",
+  "lat": 4.5,
+  "lon": 114.6667,
+  "alt": [
+   "Nation of Brunei, Abode of Peace",
+   "Brunei Darussalam",
+   "Nation of Brunei",
+   "the Abode of Peace"
+  ]
+ },
+ {
+  "code": "BG",
+  "name": "Bulgaria",
+  "continent": "EU",
+  "ccn3": "100",
+  "un": true,
+  "observer": false,
+  "flag": "🇧🇬",
+  "lat": 43,
+  "lon": 25,
+  "alt": [
+   "Republic of Bulgaria",
+   "Република България"
+  ]
+ },
+ {
+  "code": "BF",
+  "name": "Burkina Faso",
+  "continent": "AF",
+  "ccn3": "854",
+  "un": true,
+  "observer": false,
+  "flag": "🇧🇫",
+  "lat": 13,
+  "lon": -2,
+  "alt": []
+ },
+ {
+  "code": "BI",
+  "name": "Burundi",
+  "continent": "AF",
+  "ccn3": "108",
+  "un": true,
+  "observer": false,
+  "flag": "🇧🇮",
+  "lat": -3.5,
+  "lon": 30,
+  "alt": [
+   "Republic of Burundi",
+   "Republika y'Uburundi",
+   "République du Burundi"
+  ]
+ },
+ {
+  "code": "KH",
+  "name": "Cambodia",
+  "continent": "AS",
+  "ccn3": "116",
+  "un": true,
+  "observer": false,
+  "flag": "🇰🇭",
+  "lat": 13,
+  "lon": 105,
+  "alt": [
+   "Kingdom of Cambodia"
+  ]
+ },
+ {
+  "code": "CM",
+  "name": "Cameroon",
+  "continent": "AF",
+  "ccn3": "120",
+  "un": true,
+  "observer": false,
+  "flag": "🇨🇲",
+  "lat": 6,
+  "lon": 12,
+  "alt": [
+   "Republic of Cameroon",
+   "République du Cameroun"
+  ]
+ },
+ {
+  "code": "CA",
+  "name": "Canada",
+  "continent": "NA",
+  "ccn3": "124",
+  "un": true,
+  "observer": false,
+  "flag": "🇨🇦",
+  "lat": 60,
+  "lon": -95,
+  "alt": []
+ },
+ {
+  "code": "CV",
+  "name": "Cape Verde",
+  "continent": "AF",
+  "ccn3": "132",
+  "un": true,
+  "observer": false,
+  "flag": "🇨🇻",
+  "lat": 16,
+  "lon": -24,
+  "alt": [
+   "Republic of Cabo Verde",
+   "República de Cabo Verde"
+  ]
+ },
+ {
+  "code": "BQ",
+  "name": "Caribbean Netherlands",
+  "continent": "NA",
+  "ccn3": "535",
+  "un": false,
+  "observer": false,
+  "flag": "",
+  "lat": 12.18,
+  "lon": -68.25,
+  "alt": [
+   "Bonaire, Sint Eustatius and Saba",
+   "BES islands",
+   "Bonaire Sint Eustatius and Saba"
+  ]
+ },
+ {
+  "code": "KY",
+  "name": "Cayman Islands",
+  "continent": "NA",
+  "ccn3": "136",
+  "un": false,
+  "observer": false,
+  "flag": "🇰🇾",
+  "lat": 19.5,
+  "lon": -80.5,
+  "alt": []
+ },
+ {
+  "code": "CF",
+  "name": "Central African Republic",
+  "continent": "AF",
+  "ccn3": "140",
+  "un": true,
+  "observer": false,
+  "flag": "🇨🇫",
+  "lat": 7,
+  "lon": 21,
+  "alt": [
+   "République centrafricaine"
+  ]
+ },
+ {
+  "code": "TD",
+  "name": "Chad",
+  "continent": "AF",
+  "ccn3": "148",
+  "un": true,
+  "observer": false,
+  "flag": "🇹🇩",
+  "lat": 15,
+  "lon": 19,
+  "alt": [
+   "Republic of Chad",
+   "Tchad",
+   "République du Tchad"
+  ]
+ },
+ {
+  "code": "CL",
+  "name": "Chile",
+  "continent": "SA",
+  "ccn3": "152",
+  "un": true,
+  "observer": false,
+  "flag": "🇨🇱",
+  "lat": -30,
+  "lon": -71,
+  "alt": [
+   "Republic of Chile",
+   "República de Chile"
+  ]
+ },
+ {
+  "code": "CN",
+  "name": "China",
+  "continent": "AS",
+  "ccn3": "156",
+  "un": true,
+  "observer": false,
+  "flag": "🇨🇳",
+  "lat": 35,
+  "lon": 105,
+  "alt": [
+   "People's Republic of China",
+   "Zhōngguó",
+   "Zhongguo",
+   "Zhonghua",
+   "中华人民共和国",
+   "Zhōnghuá Rénmín Gònghéguó"
+  ]
+ },
+ {
+  "code": "CX",
+  "name": "Christmas Island",
+  "continent": "AS",
+  "ccn3": "162",
+  "un": false,
+  "observer": false,
+  "flag": "🇨🇽",
+  "lat": -10.5,
+  "lon": 105.6667,
+  "alt": [
+   "Territory of Christmas Island"
+  ]
+ },
+ {
+  "code": "CC",
+  "name": "Cocos (Keeling) Islands",
+  "continent": "AS",
+  "ccn3": "166",
+  "un": false,
+  "observer": false,
+  "flag": "🇨🇨",
+  "lat": -12.5,
+  "lon": 96.8333,
+  "alt": [
+   "Territory of the Cocos (Keeling) Islands",
+   "Keeling Islands",
+   "Cocos Islands"
+  ]
+ },
+ {
+  "code": "CO",
+  "name": "Colombia",
+  "continent": "SA",
+  "ccn3": "170",
+  "un": true,
+  "observer": false,
+  "flag": "🇨🇴",
+  "lat": 4,
+  "lon": -72,
+  "alt": [
+   "Republic of Colombia",
+   "República de Colombia"
+  ]
+ },
+ {
+  "code": "KM",
+  "name": "Comoros",
+  "continent": "AF",
+  "ccn3": "174",
+  "un": true,
+  "observer": false,
+  "flag": "🇰🇲",
+  "lat": -12.1667,
+  "lon": 44.25,
+  "alt": [
+   "Union of the Comoros",
+   "Union des Comores",
+   "Udzima wa Komori",
+   "al-Ittiḥād al-Qumurī"
+  ]
+ },
+ {
+  "code": "CK",
+  "name": "Cook Islands",
+  "continent": "OC",
+  "ccn3": "184",
+  "un": false,
+  "observer": false,
+  "flag": "🇨🇰",
+  "lat": -21.2333,
+  "lon": -159.7667,
+  "alt": [
+   "Kūki 'Āirani"
+  ]
+ },
+ {
+  "code": "CR",
+  "name": "Costa Rica",
+  "continent": "NA",
+  "ccn3": "188",
+  "un": true,
+  "observer": false,
+  "flag": "🇨🇷",
+  "lat": 10,
+  "lon": -84,
+  "alt": [
+   "Republic of Costa Rica",
+   "República de Costa Rica"
+  ]
+ },
+ {
+  "code": "HR",
+  "name": "Croatia",
+  "continent": "EU",
+  "ccn3": "191",
+  "un": true,
+  "observer": false,
+  "flag": "🇭🇷",
+  "lat": 45.1667,
+  "lon": 15.5,
+  "alt": [
+   "Republic of Croatia",
+   "Hrvatska",
+   "Republika Hrvatska"
+  ]
+ },
+ {
+  "code": "CU",
+  "name": "Cuba",
+  "continent": "NA",
+  "ccn3": "192",
+  "un": true,
+  "observer": false,
+  "flag": "🇨🇺",
+  "lat": 21.5,
+  "lon": -80,
+  "alt": [
+   "Republic of Cuba",
+   "República de Cuba"
+  ]
+ },
+ {
+  "code": "CW",
+  "name": "Curaçao",
+  "continent": "NA",
+  "ccn3": "531",
+  "un": false,
+  "observer": false,
+  "flag": "🇨🇼",
+  "lat": 12.1167,
+  "lon": -68.9333,
+  "alt": [
+   "Country of Curaçao",
+   "Curacao",
+   "Kòrsou",
+   "Land Curaçao",
+   "Pais Kòrsou"
+  ]
+ },
+ {
+  "code": "CY",
+  "name": "Cyprus",
+  "continent": "AS",
+  "ccn3": "196",
+  "un": true,
+  "observer": false,
+  "flag": "🇨🇾",
+  "lat": 35,
+  "lon": 33,
+  "alt": [
+   "Republic of Cyprus",
+   "Kýpros",
+   "Kıbrıs",
+   "Κυπριακή Δημοκρατία",
+   "Kıbrıs Cumhuriyeti"
+  ]
+ },
+ {
+  "code": "CZ",
+  "name": "Czechia",
+  "continent": "EU",
+  "ccn3": "203",
+  "un": true,
+  "observer": false,
+  "flag": "🇨🇿",
+  "lat": 49.75,
+  "lon": 15.5,
+  "alt": [
+   "Czech Republic",
+   "Česká republika",
+   "Česko"
+  ]
+ },
+ {
+  "code": "DK",
+  "name": "Denmark",
+  "continent": "EU",
+  "ccn3": "208",
+  "un": true,
+  "observer": false,
+  "flag": "🇩🇰",
+  "lat": 56,
+  "lon": 10,
+  "alt": [
+   "Kingdom of Denmark",
+   "Danmark",
+   "Kongeriget Danmark"
+  ]
+ },
+ {
+  "code": "DJ",
+  "name": "Djibouti",
+  "continent": "AF",
+  "ccn3": "262",
+  "un": true,
+  "observer": false,
+  "flag": "🇩🇯",
+  "lat": 11.5,
+  "lon": 43,
+  "alt": [
+   "Republic of Djibouti",
+   "Jabuuti",
+   "Gabuuti",
+   "République de Djibouti",
+   "Gabuutih Ummuuno",
+   "Jamhuuriyadda Jabuuti"
+  ]
+ },
+ {
+  "code": "DM",
+  "name": "Dominica",
+  "continent": "NA",
+  "ccn3": "212",
+  "un": true,
+  "observer": false,
+  "flag": "🇩🇲",
+  "lat": 15.4167,
+  "lon": -61.3333,
+  "alt": [
+   "Commonwealth of Dominica",
+   "Dominique",
+   "Wai‘tu kubuli"
+  ]
+ },
+ {
+  "code": "DO",
+  "name": "Dominican Republic",
+  "continent": "NA",
+  "ccn3": "214",
+  "un": true,
+  "observer": false,
+  "flag": "🇩🇴",
+  "lat": 19,
+  "lon": -70.6667,
+  "alt": []
+ },
+ {
+  "code": "CD",
+  "name": "DR Congo",
+  "continent": "AF",
+  "ccn3": "180",
+  "un": true,
+  "observer": false,
+  "flag": "🇨🇩",
+  "lat": 0,
+  "lon": 25,
+  "alt": [
+   "Democratic Republic of the Congo",
+   "Congo-Kinshasa",
+   "Congo, the Democratic Republic of the",
+   "Democratic Republic of Congo",
+   "DRC"
+  ]
+ },
+ {
+  "code": "EC",
+  "name": "Ecuador",
+  "continent": "SA",
+  "ccn3": "218",
+  "un": true,
+  "observer": false,
+  "flag": "🇪🇨",
+  "lat": -2,
+  "lon": -77.5,
+  "alt": [
+   "Republic of Ecuador",
+   "República del Ecuador"
+  ]
+ },
+ {
+  "code": "EG",
+  "name": "Egypt",
+  "continent": "AF",
+  "ccn3": "818",
+  "un": true,
+  "observer": false,
+  "flag": "🇪🇬",
+  "lat": 27,
+  "lon": 30,
+  "alt": [
+   "Arab Republic of Egypt"
+  ]
+ },
+ {
+  "code": "SV",
+  "name": "El Salvador",
+  "continent": "NA",
+  "ccn3": "222",
+  "un": true,
+  "observer": false,
+  "flag": "🇸🇻",
+  "lat": 13.8333,
+  "lon": -88.9167,
+  "alt": [
+   "Republic of El Salvador",
+   "República de El Salvador"
+  ]
+ },
+ {
+  "code": "GQ",
+  "name": "Equatorial Guinea",
+  "continent": "AF",
+  "ccn3": "226",
+  "un": true,
+  "observer": false,
+  "flag": "🇬🇶",
+  "lat": 2,
+  "lon": 10,
+  "alt": [
+   "Republic of Equatorial Guinea",
+   "República de Guinea Ecuatorial",
+   "République de Guinée équatoriale",
+   "República da Guiné Equatorial"
+  ]
+ },
+ {
+  "code": "ER",
+  "name": "Eritrea",
+  "continent": "AF",
+  "ccn3": "232",
+  "un": true,
+  "observer": false,
+  "flag": "🇪🇷",
+  "lat": 15,
+  "lon": 39,
+  "alt": [
+   "State of Eritrea",
+   "ሃገረ ኤርትራ",
+   "Dawlat Iritriyá",
+   "ʾErtrā",
+   "Iritriyā"
+  ]
+ },
+ {
+  "code": "EE",
+  "name": "Estonia",
+  "continent": "EU",
+  "ccn3": "233",
+  "un": true,
+  "observer": false,
+  "flag": "🇪🇪",
+  "lat": 59,
+  "lon": 26,
+  "alt": [
+   "Republic of Estonia",
+   "Eesti",
+   "Eesti Vabariik"
+  ]
+ },
+ {
+  "code": "SZ",
+  "name": "Eswatini",
+  "continent": "AF",
+  "ccn3": "748",
+  "un": true,
+  "observer": false,
+  "flag": "🇸🇿",
+  "lat": -26.5,
+  "lon": 31.5,
+  "alt": [
+   "Kingdom of Eswatini",
+   "Swaziland",
+   "weSwatini",
+   "Swatini",
+   "Ngwane",
+   "Umbuso weSwatini"
+  ]
+ },
+ {
+  "code": "ET",
+  "name": "Ethiopia",
+  "continent": "AF",
+  "ccn3": "231",
+  "un": true,
+  "observer": false,
+  "flag": "🇪🇹",
+  "lat": 8,
+  "lon": 38,
+  "alt": [
+   "Federal Democratic Republic of Ethiopia",
+   "ʾĪtyōṗṗyā",
+   "የኢትዮጵያ ፌዴራላዊ ዲሞክራሲያዊ ሪፐብሊክ"
+  ]
+ },
+ {
+  "code": "FK",
+  "name": "Falkland Islands",
+  "continent": "SA",
+  "ccn3": "238",
+  "un": false,
+  "observer": false,
+  "flag": "🇫🇰",
+  "lat": -51.75,
+  "lon": -59,
+  "alt": [
+   "Islas Malvinas",
+   "Falkland Islands (Malvinas)"
+  ]
+ },
+ {
+  "code": "FO",
+  "name": "Faroe Islands",
+  "continent": "EU",
+  "ccn3": "234",
+  "un": false,
+  "observer": false,
+  "flag": "🇫🇴",
+  "lat": 62,
+  "lon": -7,
+  "alt": [
+   "Føroyar",
+   "Færøerne",
+   "Faeroe Islands"
+  ]
+ },
+ {
+  "code": "FJ",
+  "name": "Fiji",
+  "continent": "OC",
+  "ccn3": "242",
+  "un": true,
+  "observer": false,
+  "flag": "🇫🇯",
+  "lat": -18,
+  "lon": 175,
+  "alt": [
+   "Republic of Fiji",
+   "Viti",
+   "Matanitu ko Viti",
+   "Fijī Gaṇarājya"
+  ]
+ },
+ {
+  "code": "FI",
+  "name": "Finland",
+  "continent": "EU",
+  "ccn3": "246",
+  "un": true,
+  "observer": false,
+  "flag": "🇫🇮",
+  "lat": 64,
+  "lon": 26,
+  "alt": [
+   "Republic of Finland",
+   "Suomi",
+   "Suomen tasavalta",
+   "Republiken Finland"
+  ]
+ },
+ {
+  "code": "FR",
+  "name": "France",
+  "continent": "EU",
+  "ccn3": "250",
+  "un": true,
+  "observer": false,
+  "flag": "🇫🇷",
+  "lat": 46,
+  "lon": 2,
+  "alt": [
+   "French Republic",
+   "République française"
+  ]
+ },
+ {
+  "code": "GF",
+  "name": "French Guiana",
+  "continent": "SA",
+  "ccn3": "254",
+  "un": false,
+  "observer": false,
+  "flag": "🇬🇫",
+  "lat": 4,
+  "lon": -53,
+  "alt": [
+   "Guiana",
+   "Guyane"
+  ]
+ },
+ {
+  "code": "PF",
+  "name": "French Polynesia",
+  "continent": "OC",
+  "ccn3": "258",
+  "un": false,
+  "observer": false,
+  "flag": "🇵🇫",
+  "lat": -15,
+  "lon": -140,
+  "alt": [
+   "Polynésie française",
+   "Pōrīnetia Farāni"
+  ]
+ },
+ {
+  "code": "TF",
+  "name": "French Southern and Antarctic Lands",
+  "continent": "AF",
+  "ccn3": "260",
+  "un": false,
+  "observer": false,
+  "flag": "🇹🇫",
+  "lat": -49.25,
+  "lon": 69.167,
+  "alt": [
+   "Territory of the French Southern and Antarctic Lands",
+   "French Southern Territories"
+  ]
+ },
+ {
+  "code": "GA",
+  "name": "Gabon",
+  "continent": "AF",
+  "ccn3": "266",
+  "un": true,
+  "observer": false,
+  "flag": "🇬🇦",
+  "lat": -1,
+  "lon": 11.75,
+  "alt": [
+   "Gabonese Republic",
+   "République Gabonaise"
+  ]
+ },
+ {
+  "code": "GM",
+  "name": "Gambia",
+  "continent": "AF",
+  "ccn3": "270",
+  "un": true,
+  "observer": false,
+  "flag": "🇬🇲",
+  "lat": 13.4667,
+  "lon": -16.5667,
+  "alt": [
+   "Republic of the Gambia"
+  ]
+ },
+ {
+  "code": "GE",
+  "name": "Georgia",
+  "continent": "AS",
+  "ccn3": "268",
+  "un": true,
+  "observer": false,
+  "flag": "🇬🇪",
+  "lat": 42,
+  "lon": 43.5,
+  "alt": [
+   "Sakartvelo"
+  ]
+ },
+ {
+  "code": "DE",
+  "name": "Germany",
+  "continent": "EU",
+  "ccn3": "276",
+  "un": true,
+  "observer": false,
+  "flag": "🇩🇪",
+  "lat": 51,
+  "lon": 9,
+  "alt": [
+   "Federal Republic of Germany",
+   "Bundesrepublik Deutschland"
+  ]
+ },
+ {
+  "code": "GH",
+  "name": "Ghana",
+  "continent": "AF",
+  "ccn3": "288",
+  "un": true,
+  "observer": false,
+  "flag": "🇬🇭",
+  "lat": 8,
+  "lon": -2,
+  "alt": [
+   "Republic of Ghana"
+  ]
+ },
+ {
+  "code": "GI",
+  "name": "Gibraltar",
+  "continent": "EU",
+  "ccn3": "292",
+  "un": false,
+  "observer": false,
+  "flag": "🇬🇮",
+  "lat": 36.1333,
+  "lon": -5.35,
+  "alt": []
+ },
+ {
+  "code": "GR",
+  "name": "Greece",
+  "continent": "EU",
+  "ccn3": "300",
+  "un": true,
+  "observer": false,
+  "flag": "🇬🇷",
+  "lat": 39,
+  "lon": 22,
+  "alt": [
+   "Hellenic Republic",
+   "Elláda",
+   "Ελληνική Δημοκρατία"
+  ]
+ },
+ {
+  "code": "GL",
+  "name": "Greenland",
+  "continent": "NA",
+  "ccn3": "304",
+  "un": false,
+  "observer": false,
+  "flag": "🇬🇱",
+  "lat": 72,
+  "lon": -40,
+  "alt": [
+   "Grønland"
+  ]
+ },
+ {
+  "code": "GD",
+  "name": "Grenada",
+  "continent": "NA",
+  "ccn3": "308",
+  "un": true,
+  "observer": false,
+  "flag": "🇬🇩",
+  "lat": 12.1167,
+  "lon": -61.6667,
+  "alt": []
+ },
+ {
+  "code": "GP",
+  "name": "Guadeloupe",
+  "continent": "NA",
+  "ccn3": "312",
+  "un": false,
+  "observer": false,
+  "flag": "🇬🇵",
+  "lat": 16.25,
+  "lon": -61.5833,
+  "alt": [
+   "Gwadloup"
+  ]
+ },
+ {
+  "code": "GU",
+  "name": "Guam",
+  "continent": "OC",
+  "ccn3": "316",
+  "un": false,
+  "observer": false,
+  "flag": "🇬🇺",
+  "lat": 13.4667,
+  "lon": 144.7833,
+  "alt": [
+   "Guåhån"
+  ]
+ },
+ {
+  "code": "GT",
+  "name": "Guatemala",
+  "continent": "NA",
+  "ccn3": "320",
+  "un": true,
+  "observer": false,
+  "flag": "🇬🇹",
+  "lat": 15.5,
+  "lon": -90.25,
+  "alt": [
+   "Republic of Guatemala"
+  ]
+ },
+ {
+  "code": "GG",
+  "name": "Guernsey",
+  "continent": "EU",
+  "ccn3": "831",
+  "un": false,
+  "observer": false,
+  "flag": "🇬🇬",
+  "lat": 49.4667,
+  "lon": -2.5833,
+  "alt": [
+   "Bailiwick of Guernsey",
+   "Bailliage de Guernesey"
+  ]
+ },
+ {
+  "code": "GN",
+  "name": "Guinea",
+  "continent": "AF",
+  "ccn3": "324",
+  "un": true,
+  "observer": false,
+  "flag": "🇬🇳",
+  "lat": 11,
+  "lon": -10,
+  "alt": [
+   "Republic of Guinea",
+   "République de Guinée"
+  ]
+ },
+ {
+  "code": "GW",
+  "name": "Guinea-Bissau",
+  "continent": "AF",
+  "ccn3": "624",
+  "un": true,
+  "observer": false,
+  "flag": "🇬🇼",
+  "lat": 12,
+  "lon": -15,
+  "alt": [
+   "Republic of Guinea-Bissau",
+   "República da Guiné-Bissau"
+  ]
+ },
+ {
+  "code": "GY",
+  "name": "Guyana",
+  "continent": "SA",
+  "ccn3": "328",
+  "un": true,
+  "observer": false,
+  "flag": "🇬🇾",
+  "lat": 5,
+  "lon": -59,
+  "alt": [
+   "Co-operative Republic of Guyana"
+  ]
+ },
+ {
+  "code": "HT",
+  "name": "Haiti",
+  "continent": "NA",
+  "ccn3": "332",
+  "un": true,
+  "observer": false,
+  "flag": "🇭🇹",
+  "lat": 19,
+  "lon": -72.4167,
+  "alt": [
+   "Republic of Haiti",
+   "République d'Haïti",
+   "Repiblik Ayiti"
+  ]
+ },
+ {
+  "code": "HM",
+  "name": "Heard Island and McDonald Islands",
+  "continent": "OC",
+  "ccn3": "334",
+  "un": false,
+  "observer": false,
+  "flag": "🇭🇲",
+  "lat": -53.1,
+  "lon": 72.5167,
+  "alt": []
+ },
+ {
+  "code": "HN",
+  "name": "Honduras",
+  "continent": "NA",
+  "ccn3": "340",
+  "un": true,
+  "observer": false,
+  "flag": "🇭🇳",
+  "lat": 15,
+  "lon": -86.5,
+  "alt": [
+   "Republic of Honduras",
+   "República de Honduras"
+  ]
+ },
+ {
+  "code": "HK",
+  "name": "Hong Kong",
+  "continent": "AS",
+  "ccn3": "344",
+  "un": false,
+  "observer": false,
+  "flag": "🇭🇰",
+  "lat": 22.267,
+  "lon": 114.188,
+  "alt": [
+   "Hong Kong Special Administrative Region of the People's Republic of China"
+  ]
+ },
+ {
+  "code": "HU",
+  "name": "Hungary",
+  "continent": "EU",
+  "ccn3": "348",
+  "un": true,
+  "observer": false,
+  "flag": "🇭🇺",
+  "lat": 47,
+  "lon": 20,
+  "alt": []
+ },
+ {
+  "code": "IS",
+  "name": "Iceland",
+  "continent": "EU",
+  "ccn3": "352",
+  "un": true,
+  "observer": false,
+  "flag": "🇮🇸",
+  "lat": 65,
+  "lon": -18,
+  "alt": [
+   "Island",
+   "Republic of Iceland",
+   "Lýðveldið Ísland"
+  ]
+ },
+ {
+  "code": "IN",
+  "name": "India",
+  "continent": "AS",
+  "ccn3": "356",
+  "un": true,
+  "observer": false,
+  "flag": "🇮🇳",
+  "lat": 20,
+  "lon": 77,
+  "alt": [
+   "Republic of India",
+   "Bhārat",
+   "Bharat Ganrajya",
+   "இந்தியா"
+  ]
+ },
+ {
+  "code": "ID",
+  "name": "Indonesia",
+  "continent": "AS",
+  "ccn3": "360",
+  "un": true,
+  "observer": false,
+  "flag": "🇮🇩",
+  "lat": -5,
+  "lon": 120,
+  "alt": [
+   "Republic of Indonesia",
+   "Republik Indonesia"
+  ]
+ },
+ {
+  "code": "IR",
+  "name": "Iran",
+  "continent": "AS",
+  "ccn3": "364",
+  "un": true,
+  "observer": false,
+  "flag": "🇮🇷",
+  "lat": 32,
+  "lon": 53,
+  "alt": [
+   "Islamic Republic of Iran",
+   "Iran, Islamic Republic of",
+   "Jomhuri-ye Eslāmi-ye Irān"
+  ]
+ },
+ {
+  "code": "IQ",
+  "name": "Iraq",
+  "continent": "AS",
+  "ccn3": "368",
+  "un": true,
+  "observer": false,
+  "flag": "🇮🇶",
+  "lat": 33,
+  "lon": 44,
+  "alt": [
+   "Republic of Iraq",
+   "Jumhūriyyat al-‘Irāq"
+  ]
+ },
+ {
+  "code": "IE",
+  "name": "Ireland",
+  "continent": "EU",
+  "ccn3": "372",
+  "un": true,
+  "observer": false,
+  "flag": "🇮🇪",
+  "lat": 53,
+  "lon": -8,
+  "alt": [
+   "Republic of Ireland",
+   "Éire",
+   "Poblacht na hÉireann"
+  ]
+ },
+ {
+  "code": "IM",
+  "name": "Isle of Man",
+  "continent": "EU",
+  "ccn3": "833",
+  "un": false,
+  "observer": false,
+  "flag": "🇮🇲",
+  "lat": 54.25,
+  "lon": -4.5,
+  "alt": [
+   "Ellan Vannin",
+   "Mann",
+   "Mannin"
+  ]
+ },
+ {
+  "code": "IL",
+  "name": "Israel",
+  "continent": "AS",
+  "ccn3": "376",
+  "un": true,
+  "observer": false,
+  "flag": "🇮🇱",
+  "lat": 31.47,
+  "lon": 35.13,
+  "alt": [
+   "State of Israel",
+   "Medīnat Yisrā'el"
+  ]
+ },
+ {
+  "code": "IT",
+  "name": "Italy",
+  "continent": "EU",
+  "ccn3": "380",
+  "un": true,
+  "observer": false,
+  "flag": "🇮🇹",
+  "lat": 42.8333,
+  "lon": 12.8333,
+  "alt": [
+   "Italian Republic",
+   "Repubblica italiana"
+  ]
+ },
+ {
+  "code": "CI",
+  "name": "Ivory Coast",
+  "continent": "AF",
+  "ccn3": "384",
+  "un": true,
+  "observer": false,
+  "flag": "🇨🇮",
+  "lat": 8,
+  "lon": -5,
+  "alt": [
+   "Republic of Côte d'Ivoire",
+   "Côte d'Ivoire",
+   "Cote d'Ivoire",
+   "République de Côte d'Ivoire"
+  ]
+ },
+ {
+  "code": "JM",
+  "name": "Jamaica",
+  "continent": "NA",
+  "ccn3": "388",
+  "un": true,
+  "observer": false,
+  "flag": "🇯🇲",
+  "lat": 18.25,
+  "lon": -77.5,
+  "alt": []
+ },
+ {
+  "code": "JP",
+  "name": "Japan",
+  "continent": "AS",
+  "ccn3": "392",
+  "un": true,
+  "observer": false,
+  "flag": "🇯🇵",
+  "lat": 36,
+  "lon": 138,
+  "alt": [
+   "Nippon",
+   "Nihon"
+  ]
+ },
+ {
+  "code": "JE",
+  "name": "Jersey",
+  "continent": "EU",
+  "ccn3": "832",
+  "un": false,
+  "observer": false,
+  "flag": "🇯🇪",
+  "lat": 49.25,
+  "lon": -2.1667,
+  "alt": [
+   "Bailiwick of Jersey",
+   "Bailliage de Jersey",
+   "Bailliage dé Jèrri"
+  ]
+ },
+ {
+  "code": "JO",
+  "name": "Jordan",
+  "continent": "AS",
+  "ccn3": "400",
+  "un": true,
+  "observer": false,
+  "flag": "🇯🇴",
+  "lat": 31,
+  "lon": 36,
+  "alt": [
+   "Hashemite Kingdom of Jordan",
+   "al-Mamlakah al-Urdunīyah al-Hāshimīyah"
+  ]
+ },
+ {
+  "code": "KZ",
+  "name": "Kazakhstan",
+  "continent": "AS",
+  "ccn3": "398",
+  "un": true,
+  "observer": false,
+  "flag": "🇰🇿",
+  "lat": 48,
+  "lon": 68,
+  "alt": [
+   "Republic of Kazakhstan",
+   "Qazaqstan",
+   "Казахстан",
+   "Қазақстан Республикасы",
+   "Qazaqstan Respublïkası",
+   "Республика Казахстан",
+   "Respublika Kazakhstan"
+  ]
+ },
+ {
+  "code": "KE",
+  "name": "Kenya",
+  "continent": "AF",
+  "ccn3": "404",
+  "un": true,
+  "observer": false,
+  "flag": "🇰🇪",
+  "lat": 1,
+  "lon": 38,
+  "alt": [
+   "Republic of Kenya",
+   "Jamhuri ya Kenya"
+  ]
+ },
+ {
+  "code": "KI",
+  "name": "Kiribati",
+  "continent": "OC",
+  "ccn3": "296",
+  "un": true,
+  "observer": false,
+  "flag": "🇰🇮",
+  "lat": 1.4167,
+  "lon": 173,
+  "alt": [
+   "Independent and Sovereign Republic of Kiribati",
+   "Republic of Kiribati",
+   "Ribaberiki Kiribati"
+  ]
+ },
+ {
+  "code": "XK",
+  "name": "Kosovo",
+  "continent": "EU",
+  "ccn3": null,
+  "un": false,
+  "observer": false,
+  "flag": "🇽🇰",
+  "lat": 42.6667,
+  "lon": 21.1667,
+  "alt": [
+   "Republic of Kosovo",
+   "Република Косово"
+  ]
+ },
+ {
+  "code": "KW",
+  "name": "Kuwait",
+  "continent": "AS",
+  "ccn3": "414",
+  "un": true,
+  "observer": false,
+  "flag": "🇰🇼",
+  "lat": 29.5,
+  "lon": 45.75,
+  "alt": [
+   "State of Kuwait",
+   "Dawlat al-Kuwait"
+  ]
+ },
+ {
+  "code": "KG",
+  "name": "Kyrgyzstan",
+  "continent": "AS",
+  "ccn3": "417",
+  "un": true,
+  "observer": false,
+  "flag": "🇰🇬",
+  "lat": 41,
+  "lon": 75,
+  "alt": [
+   "Kyrgyz Republic",
+   "Киргизия",
+   "Кыргыз Республикасы",
+   "Kyrgyz Respublikasy"
+  ]
+ },
+ {
+  "code": "LA",
+  "name": "Laos",
+  "continent": "AS",
+  "ccn3": "418",
+  "un": true,
+  "observer": false,
+  "flag": "🇱🇦",
+  "lat": 18,
+  "lon": 105,
+  "alt": [
+   "Lao People's Democratic Republic",
+   "Lao",
+   "Sathalanalat Paxathipatai Paxaxon Lao"
+  ]
+ },
+ {
+  "code": "LV",
+  "name": "Latvia",
+  "continent": "EU",
+  "ccn3": "428",
+  "un": true,
+  "observer": false,
+  "flag": "🇱🇻",
+  "lat": 57,
+  "lon": 25,
+  "alt": [
+   "Republic of Latvia",
+   "Latvijas Republika"
+  ]
+ },
+ {
+  "code": "LB",
+  "name": "Lebanon",
+  "continent": "AS",
+  "ccn3": "422",
+  "un": true,
+  "observer": false,
+  "flag": "🇱🇧",
+  "lat": 33.8333,
+  "lon": 35.8333,
+  "alt": [
+   "Lebanese Republic",
+   "Al-Jumhūrīyah Al-Libnānīyah"
+  ]
+ },
+ {
+  "code": "LS",
+  "name": "Lesotho",
+  "continent": "AF",
+  "ccn3": "426",
+  "un": true,
+  "observer": false,
+  "flag": "🇱🇸",
+  "lat": -29.5,
+  "lon": 28.5,
+  "alt": [
+   "Kingdom of Lesotho",
+   "Muso oa Lesotho"
+  ]
+ },
+ {
+  "code": "LR",
+  "name": "Liberia",
+  "continent": "AF",
+  "ccn3": "430",
+  "un": true,
+  "observer": false,
+  "flag": "🇱🇷",
+  "lat": 6.5,
+  "lon": -9.5,
+  "alt": [
+   "Republic of Liberia"
+  ]
+ },
+ {
+  "code": "LY",
+  "name": "Libya",
+  "continent": "AF",
+  "ccn3": "434",
+  "un": true,
+  "observer": false,
+  "flag": "🇱🇾",
+  "lat": 25,
+  "lon": 17,
+  "alt": [
+   "State of Libya",
+   "Dawlat Libya"
+  ]
+ },
+ {
+  "code": "LI",
+  "name": "Liechtenstein",
+  "continent": "EU",
+  "ccn3": "438",
+  "un": true,
+  "observer": false,
+  "flag": "🇱🇮",
+  "lat": 47.2667,
+  "lon": 9.5333,
+  "alt": [
+   "Principality of Liechtenstein",
+   "Fürstentum Liechtenstein"
+  ]
+ },
+ {
+  "code": "LT",
+  "name": "Lithuania",
+  "continent": "EU",
+  "ccn3": "440",
+  "un": true,
+  "observer": false,
+  "flag": "🇱🇹",
+  "lat": 56,
+  "lon": 24,
+  "alt": [
+   "Republic of Lithuania",
+   "Lietuvos Respublika"
+  ]
+ },
+ {
+  "code": "LU",
+  "name": "Luxembourg",
+  "continent": "EU",
+  "ccn3": "442",
+  "un": true,
+  "observer": false,
+  "flag": "🇱🇺",
+  "lat": 49.75,
+  "lon": 6.1667,
+  "alt": [
+   "Grand Duchy of Luxembourg",
+   "Grand-Duché de Luxembourg",
+   "Großherzogtum Luxemburg",
+   "Groussherzogtum Lëtzebuerg"
+  ]
+ },
+ {
+  "code": "MO",
+  "name": "Macau",
+  "continent": "AS",
+  "ccn3": "446",
+  "un": false,
+  "observer": false,
+  "flag": "🇲🇴",
+  "lat": 22.1667,
+  "lon": 113.55,
+  "alt": [
+   "Macao Special Administrative Region of the People's Republic of China",
+   "澳门",
+   "Macao",
+   "中華人民共和國澳門特別行政區",
+   "Região Administrativa Especial de Macau da República Popular da China"
+  ]
+ },
+ {
+  "code": "MG",
+  "name": "Madagascar",
+  "continent": "AF",
+  "ccn3": "450",
+  "un": true,
+  "observer": false,
+  "flag": "🇲🇬",
+  "lat": -20,
+  "lon": 47,
+  "alt": [
+   "Republic of Madagascar",
+   "Repoblikan'i Madagasikara",
+   "République de Madagascar"
+  ]
+ },
+ {
+  "code": "MW",
+  "name": "Malawi",
+  "continent": "AF",
+  "ccn3": "454",
+  "un": true,
+  "observer": false,
+  "flag": "🇲🇼",
+  "lat": -13.5,
+  "lon": 34,
+  "alt": [
+   "Republic of Malawi"
+  ]
+ },
+ {
+  "code": "MY",
+  "name": "Malaysia",
+  "continent": "AS",
+  "ccn3": "458",
+  "un": true,
+  "observer": false,
+  "flag": "🇲🇾",
+  "lat": 2.5,
+  "lon": 112.5,
+  "alt": []
+ },
+ {
+  "code": "MV",
+  "name": "Maldives",
+  "continent": "AS",
+  "ccn3": "462",
+  "un": true,
+  "observer": false,
+  "flag": "🇲🇻",
+  "lat": 3.25,
+  "lon": 73,
+  "alt": [
+   "Republic of the Maldives",
+   "Maldive Islands",
+   "Dhivehi Raajjeyge Jumhooriyya"
+  ]
+ },
+ {
+  "code": "ML",
+  "name": "Mali",
+  "continent": "AF",
+  "ccn3": "466",
+  "un": true,
+  "observer": false,
+  "flag": "🇲🇱",
+  "lat": 17,
+  "lon": -4,
+  "alt": [
+   "Republic of Mali",
+   "République du Mali"
+  ]
+ },
+ {
+  "code": "MT",
+  "name": "Malta",
+  "continent": "EU",
+  "ccn3": "470",
+  "un": true,
+  "observer": false,
+  "flag": "🇲🇹",
+  "lat": 35.8333,
+  "lon": 14.5833,
+  "alt": [
+   "Republic of Malta",
+   "Repubblika ta' Malta"
+  ]
+ },
+ {
+  "code": "MH",
+  "name": "Marshall Islands",
+  "continent": "OC",
+  "ccn3": "584",
+  "un": true,
+  "observer": false,
+  "flag": "🇲🇭",
+  "lat": 9,
+  "lon": 168,
+  "alt": [
+   "Republic of the Marshall Islands",
+   "Aolepān Aorōkin M̧ajeļ"
+  ]
+ },
+ {
+  "code": "MQ",
+  "name": "Martinique",
+  "continent": "NA",
+  "ccn3": "474",
+  "un": false,
+  "observer": false,
+  "flag": "🇲🇶",
+  "lat": 14.6667,
+  "lon": -61,
+  "alt": []
+ },
+ {
+  "code": "MR",
+  "name": "Mauritania",
+  "continent": "AF",
+  "ccn3": "478",
+  "un": true,
+  "observer": false,
+  "flag": "🇲🇷",
+  "lat": 20,
+  "lon": -12,
+  "alt": [
+   "Islamic Republic of Mauritania",
+   "al-Jumhūriyyah al-ʾIslāmiyyah al-Mūrītāniyyah"
+  ]
+ },
+ {
+  "code": "MU",
+  "name": "Mauritius",
+  "continent": "AF",
+  "ccn3": "480",
+  "un": true,
+  "observer": false,
+  "flag": "🇲🇺",
+  "lat": -20.2833,
+  "lon": 57.55,
+  "alt": [
+   "Republic of Mauritius",
+   "République de Maurice"
+  ]
+ },
+ {
+  "code": "YT",
+  "name": "Mayotte",
+  "continent": "AF",
+  "ccn3": "175",
+  "un": false,
+  "observer": false,
+  "flag": "🇾🇹",
+  "lat": -12.8333,
+  "lon": 45.1667,
+  "alt": [
+   "Department of Mayotte",
+   "Département de Mayotte"
+  ]
+ },
+ {
+  "code": "MX",
+  "name": "Mexico",
+  "continent": "NA",
+  "ccn3": "484",
+  "un": true,
+  "observer": false,
+  "flag": "🇲🇽",
+  "lat": 23,
+  "lon": -102,
+  "alt": [
+   "United Mexican States",
+   "Mexicanos",
+   "Estados Unidos Mexicanos"
+  ]
+ },
+ {
+  "code": "FM",
+  "name": "Micronesia",
+  "continent": "OC",
+  "ccn3": "583",
+  "un": true,
+  "observer": false,
+  "flag": "🇫🇲",
+  "lat": 6.9167,
+  "lon": 158.25,
+  "alt": [
+   "Federated States of Micronesia",
+   "Micronesia, Federated States of"
+  ]
+ },
+ {
+  "code": "MD",
+  "name": "Moldova",
+  "continent": "EU",
+  "ccn3": "498",
+  "un": true,
+  "observer": false,
+  "flag": "🇲🇩",
+  "lat": 47,
+  "lon": 29,
+  "alt": [
+   "Republic of Moldova",
+   "Moldova, Republic of",
+   "Republica Moldova"
+  ]
+ },
+ {
+  "code": "MC",
+  "name": "Monaco",
+  "continent": "EU",
+  "ccn3": "492",
+  "un": true,
+  "observer": false,
+  "flag": "🇲🇨",
+  "lat": 43.7333,
+  "lon": 7.4,
+  "alt": [
+   "Principality of Monaco",
+   "Principauté de Monaco"
+  ]
+ },
+ {
+  "code": "MN",
+  "name": "Mongolia",
+  "continent": "AS",
+  "ccn3": "496",
+  "un": true,
+  "observer": false,
+  "flag": "🇲🇳",
+  "lat": 46,
+  "lon": 105,
+  "alt": []
+ },
+ {
+  "code": "ME",
+  "name": "Montenegro",
+  "continent": "EU",
+  "ccn3": "499",
+  "un": true,
+  "observer": false,
+  "flag": "🇲🇪",
+  "lat": 42.5,
+  "lon": 19.3,
+  "alt": [
+   "Crna Gora"
+  ]
+ },
+ {
+  "code": "MS",
+  "name": "Montserrat",
+  "continent": "NA",
+  "ccn3": "500",
+  "un": false,
+  "observer": false,
+  "flag": "🇲🇸",
+  "lat": 16.75,
+  "lon": -62.2,
+  "alt": []
+ },
+ {
+  "code": "MA",
+  "name": "Morocco",
+  "continent": "AF",
+  "ccn3": "504",
+  "un": true,
+  "observer": false,
+  "flag": "🇲🇦",
+  "lat": 32,
+  "lon": -5,
+  "alt": [
+   "Kingdom of Morocco",
+   "Al-Mamlakah al-Maġribiyah"
+  ]
+ },
+ {
+  "code": "MZ",
+  "name": "Mozambique",
+  "continent": "AF",
+  "ccn3": "508",
+  "un": true,
+  "observer": false,
+  "flag": "🇲🇿",
+  "lat": -18.25,
+  "lon": 35,
+  "alt": [
+   "Republic of Mozambique",
+   "República de Moçambique"
+  ]
+ },
+ {
+  "code": "MM",
+  "name": "Myanmar",
+  "continent": "AS",
+  "ccn3": "104",
+  "un": true,
+  "observer": false,
+  "flag": "🇲🇲",
+  "lat": 22,
+  "lon": 98,
+  "alt": [
+   "Republic of the Union of Myanmar",
+   "Burma",
+   "Pyidaunzu Thanmăda Myăma Nainngandaw"
+  ]
+ },
+ {
+  "code": "NA",
+  "name": "Namibia",
+  "continent": "AF",
+  "ccn3": "516",
+  "un": true,
+  "observer": false,
+  "flag": "🇳🇦",
+  "lat": -22,
+  "lon": 17,
+  "alt": [
+   "Republic of Namibia",
+   "Namibië"
+  ]
+ },
+ {
+  "code": "NR",
+  "name": "Nauru",
+  "continent": "OC",
+  "ccn3": "520",
+  "un": true,
+  "observer": false,
+  "flag": "🇳🇷",
+  "lat": -0.5333,
+  "lon": 166.9167,
+  "alt": [
+   "Republic of Nauru",
+   "Naoero",
+   "Pleasant Island",
+   "Ripublik Naoero"
+  ]
+ },
+ {
+  "code": "NP",
+  "name": "Nepal",
+  "continent": "AS",
+  "ccn3": "524",
+  "un": true,
+  "observer": false,
+  "flag": "🇳🇵",
+  "lat": 28,
+  "lon": 84,
+  "alt": [
+   "Federal Democratic Republic of Nepal",
+   "Loktāntrik Ganatantra Nepāl"
+  ]
+ },
+ {
+  "code": "NL",
+  "name": "Netherlands",
+  "continent": "EU",
+  "ccn3": "528",
+  "un": true,
+  "observer": false,
+  "flag": "🇳🇱",
+  "lat": 52.5,
+  "lon": 5.75,
+  "alt": [
+   "Kingdom of the Netherlands",
+   "Holland",
+   "Nederland",
+   "The Netherlands"
+  ]
+ },
+ {
+  "code": "NC",
+  "name": "New Caledonia",
+  "continent": "OC",
+  "ccn3": "540",
+  "un": false,
+  "observer": false,
+  "flag": "🇳🇨",
+  "lat": -21.5,
+  "lon": 165.5,
+  "alt": []
+ },
+ {
+  "code": "NZ",
+  "name": "New Zealand",
+  "continent": "OC",
+  "ccn3": "554",
+  "un": true,
+  "observer": false,
+  "flag": "🇳🇿",
+  "lat": -41,
+  "lon": 174,
+  "alt": [
+   "Aotearoa"
+  ]
+ },
+ {
+  "code": "NI",
+  "name": "Nicaragua",
+  "continent": "NA",
+  "ccn3": "558",
+  "un": true,
+  "observer": false,
+  "flag": "🇳🇮",
+  "lat": 13,
+  "lon": -85,
+  "alt": [
+   "Republic of Nicaragua",
+   "República de Nicaragua"
+  ]
+ },
+ {
+  "code": "NE",
+  "name": "Niger",
+  "continent": "AF",
+  "ccn3": "562",
+  "un": true,
+  "observer": false,
+  "flag": "🇳🇪",
+  "lat": 16,
+  "lon": 8,
+  "alt": [
+   "Republic of Niger",
+   "Nijar"
+  ]
+ },
+ {
+  "code": "NG",
+  "name": "Nigeria",
+  "continent": "AF",
+  "ccn3": "566",
+  "un": true,
+  "observer": false,
+  "flag": "🇳🇬",
+  "lat": 10,
+  "lon": 8,
+  "alt": [
+   "Federal Republic of Nigeria",
+   "Nijeriya",
+   "Naíjíríà"
+  ]
+ },
+ {
+  "code": "NU",
+  "name": "Niue",
+  "continent": "OC",
+  "ccn3": "570",
+  "un": false,
+  "observer": false,
+  "flag": "🇳🇺",
+  "lat": -19.0333,
+  "lon": -169.8667,
+  "alt": []
+ },
+ {
+  "code": "NF",
+  "name": "Norfolk Island",
+  "continent": "OC",
+  "ccn3": "574",
+  "un": false,
+  "observer": false,
+  "flag": "🇳🇫",
+  "lat": -29.0333,
+  "lon": 167.95,
+  "alt": [
+   "Territory of Norfolk Island",
+   "Teratri of Norf'k Ailen"
+  ]
+ },
+ {
+  "code": "KP",
+  "name": "North Korea",
+  "continent": "AS",
+  "ccn3": "408",
+  "un": true,
+  "observer": false,
+  "flag": "🇰🇵",
+  "lat": 40,
+  "lon": 127,
+  "alt": [
+   "Democratic People's Republic of Korea",
+   "DPRK",
+   "조선민주주의인민공화국",
+   "Chosŏn Minjujuŭi Inmin Konghwaguk",
+   "Korea, Democratic People's Republic of",
+   "북한",
+   "북조선"
+  ]
+ },
+ {
+  "code": "MK",
+  "name": "North Macedonia",
+  "continent": "EU",
+  "ccn3": "807",
+  "un": true,
+  "observer": false,
+  "flag": "🇲🇰",
+  "lat": 41.8333,
+  "lon": 22,
+  "alt": [
+   "Republic of North Macedonia",
+   "The former Yugoslav Republic of Macedonia",
+   "Macedonia, The Former Yugoslav Republic of",
+   "Република Северна Македонија",
+   "Macedonia"
+  ]
+ },
+ {
+  "code": "MP",
+  "name": "Northern Mariana Islands",
+  "continent": "OC",
+  "ccn3": "580",
+  "un": false,
+  "observer": false,
+  "flag": "🇲🇵",
+  "lat": 15.2,
+  "lon": 145.75,
+  "alt": [
+   "Commonwealth of the Northern Mariana Islands",
+   "Sankattan Siha Na Islas Mariånas"
+  ]
+ },
+ {
+  "code": "NO",
+  "name": "Norway",
+  "continent": "EU",
+  "ccn3": "578",
+  "un": true,
+  "observer": false,
+  "flag": "🇳🇴",
+  "lat": 62,
+  "lon": 10,
+  "alt": [
+   "Kingdom of Norway",
+   "Norge",
+   "Noreg",
+   "Kongeriket Norge",
+   "Kongeriket Noreg"
+  ]
+ },
+ {
+  "code": "OM",
+  "name": "Oman",
+  "continent": "AS",
+  "ccn3": "512",
+  "un": true,
+  "observer": false,
+  "flag": "🇴🇲",
+  "lat": 21,
+  "lon": 57,
+  "alt": [
+   "Sultanate of Oman",
+   "Salṭanat ʻUmān"
+  ]
+ },
+ {
+  "code": "PK",
+  "name": "Pakistan",
+  "continent": "AS",
+  "ccn3": "586",
+  "un": true,
+  "observer": false,
+  "flag": "🇵🇰",
+  "lat": 30,
+  "lon": 70,
+  "alt": [
+   "Islamic Republic of Pakistan",
+   "Pākistān",
+   "Islāmī Jumhūriya'eh Pākistān"
+  ]
+ },
+ {
+  "code": "PW",
+  "name": "Palau",
+  "continent": "OC",
+  "ccn3": "585",
+  "un": true,
+  "observer": false,
+  "flag": "🇵🇼",
+  "lat": 7.5,
+  "lon": 134.5,
+  "alt": [
+   "Republic of Palau",
+   "Beluu er a Belau"
+  ]
+ },
+ {
+  "code": "PS",
+  "name": "Palestine",
+  "continent": "AS",
+  "ccn3": "275",
+  "un": false,
+  "observer": true,
+  "flag": "🇵🇸",
+  "lat": 31.9,
+  "lon": 35.2,
+  "alt": [
+   "State of Palestine",
+   "Palestine, State of",
+   "Dawlat Filasṭin"
+  ]
+ },
+ {
+  "code": "PA",
+  "name": "Panama",
+  "continent": "NA",
+  "ccn3": "591",
+  "un": true,
+  "observer": false,
+  "flag": "🇵🇦",
+  "lat": 9,
+  "lon": -80,
+  "alt": [
+   "Republic of Panama",
+   "República de Panamá"
+  ]
+ },
+ {
+  "code": "PG",
+  "name": "Papua New Guinea",
+  "continent": "OC",
+  "ccn3": "598",
+  "un": true,
+  "observer": false,
+  "flag": "🇵🇬",
+  "lat": -6,
+  "lon": 147,
+  "alt": [
+   "Independent State of Papua New Guinea",
+   "Independen Stet bilong Papua Niugini"
+  ]
+ },
+ {
+  "code": "XP",
+  "name": "Paracel Islands (disputed)",
+  "continent": "AS",
+  "ccn3": null,
+  "un": false,
+  "observer": false,
+  "flag": "",
+  "lat": null,
+  "lon": null,
+  "alt": []
+ },
+ {
+  "code": "PY",
+  "name": "Paraguay",
+  "continent": "SA",
+  "ccn3": "600",
+  "un": true,
+  "observer": false,
+  "flag": "🇵🇾",
+  "lat": -23,
+  "lon": -58,
+  "alt": [
+   "Republic of Paraguay",
+   "República del Paraguay",
+   "Tetã Paraguái"
+  ]
+ },
+ {
+  "code": "PE",
+  "name": "Peru",
+  "continent": "SA",
+  "ccn3": "604",
+  "un": true,
+  "observer": false,
+  "flag": "🇵🇪",
+  "lat": -10,
+  "lon": -76,
+  "alt": [
+   "Republic of Peru",
+   "República del Perú"
+  ]
+ },
+ {
+  "code": "PH",
+  "name": "Philippines",
+  "continent": "AS",
+  "ccn3": "608",
+  "un": true,
+  "observer": false,
+  "flag": "🇵🇭",
+  "lat": 13,
+  "lon": 122,
+  "alt": [
+   "Republic of the Philippines",
+   "Repúblika ng Pilipinas"
+  ]
+ },
+ {
+  "code": "PN",
+  "name": "Pitcairn Islands",
+  "continent": "OC",
+  "ccn3": "612",
+  "un": false,
+  "observer": false,
+  "flag": "🇵🇳",
+  "lat": -25.0667,
+  "lon": -130.1,
+  "alt": [
+   "Pitcairn Group of Islands",
+   "Pitcairn",
+   "Pitcairn Henderson Ducie and Oeno Islands"
+  ]
+ },
+ {
+  "code": "PL",
+  "name": "Poland",
+  "continent": "EU",
+  "ccn3": "616",
+  "un": true,
+  "observer": false,
+  "flag": "🇵🇱",
+  "lat": 52,
+  "lon": 20,
+  "alt": [
+   "Republic of Poland",
+   "Rzeczpospolita Polska"
+  ]
+ },
+ {
+  "code": "PT",
+  "name": "Portugal",
+  "continent": "EU",
+  "ccn3": "620",
+  "un": true,
+  "observer": false,
+  "flag": "🇵🇹",
+  "lat": 39.5,
+  "lon": -8,
+  "alt": [
+   "Portuguese Republic",
+   "Portuguesa",
+   "República Portuguesa"
+  ]
+ },
+ {
+  "code": "PR",
+  "name": "Puerto Rico",
+  "continent": "NA",
+  "ccn3": "630",
+  "un": false,
+  "observer": false,
+  "flag": "🇵🇷",
+  "lat": 18.25,
+  "lon": -66.5,
+  "alt": [
+   "Commonwealth of Puerto Rico",
+   "Estado Libre Asociado de Puerto Rico"
+  ]
+ },
+ {
+  "code": "QA",
+  "name": "Qatar",
+  "continent": "AS",
+  "ccn3": "634",
+  "un": true,
+  "observer": false,
+  "flag": "🇶🇦",
+  "lat": 25.5,
+  "lon": 51.25,
+  "alt": [
+   "State of Qatar",
+   "Dawlat Qaṭar"
+  ]
+ },
+ {
+  "code": "CG",
+  "name": "Republic of the Congo",
+  "continent": "AF",
+  "ccn3": "178",
+  "un": true,
+  "observer": false,
+  "flag": "🇨🇬",
+  "lat": -1,
+  "lon": 15,
+  "alt": [
+   "Congo",
+   "Congo-Brazzaville"
+  ]
+ },
+ {
+  "code": "RE",
+  "name": "Réunion",
+  "continent": "AF",
+  "ccn3": "638",
+  "un": false,
+  "observer": false,
+  "flag": "🇷🇪",
+  "lat": -21.15,
+  "lon": 55.5,
+  "alt": [
+   "Réunion Island",
+   "Reunion"
+  ]
+ },
+ {
+  "code": "RO",
+  "name": "Romania",
+  "continent": "EU",
+  "ccn3": "642",
+  "un": true,
+  "observer": false,
+  "flag": "🇷🇴",
+  "lat": 46,
+  "lon": 25,
+  "alt": [
+   "Rumania",
+   "Roumania",
+   "România"
+  ]
+ },
+ {
+  "code": "RU",
+  "name": "Russia",
+  "continent": "EU",
+  "ccn3": "643",
+  "un": true,
+  "observer": false,
+  "flag": "🇷🇺",
+  "lat": 60,
+  "lon": 100,
+  "alt": [
+   "Russian Federation",
+   "Российская Федерация"
+  ]
+ },
+ {
+  "code": "RW",
+  "name": "Rwanda",
+  "continent": "AF",
+  "ccn3": "646",
+  "un": true,
+  "observer": false,
+  "flag": "🇷🇼",
+  "lat": -2,
+  "lon": 30,
+  "alt": [
+   "Republic of Rwanda",
+   "Repubulika y'u Rwanda",
+   "République du Rwanda"
+  ]
+ },
+ {
+  "code": "BL",
+  "name": "Saint Barthélemy",
+  "continent": "NA",
+  "ccn3": "652",
+  "un": false,
+  "observer": false,
+  "flag": "🇧🇱",
+  "lat": 18.5,
+  "lon": -63.4167,
+  "alt": [
+   "Collectivity of Saint Barthélemy",
+   "St. Barthelemy",
+   "Collectivité de Saint-Barthélemy"
+  ]
+ },
+ {
+  "code": "SH",
+  "name": "Saint Helena, Ascension and Tristan da Cunha",
+  "continent": "AF",
+  "ccn3": "654",
+  "un": false,
+  "observer": false,
+  "flag": "🇸🇭",
+  "lat": -15.95,
+  "lon": -5.72,
+  "alt": [
+   "Saint Helena",
+   "St. Helena, Ascension and Tristan da Cunha"
+  ]
+ },
+ {
+  "code": "KN",
+  "name": "Saint Kitts and Nevis",
+  "continent": "NA",
+  "ccn3": "659",
+  "un": true,
+  "observer": false,
+  "flag": "🇰🇳",
+  "lat": 17.3333,
+  "lon": -62.75,
+  "alt": [
+   "Federation of Saint Christopher and Nevis"
+  ]
+ },
+ {
+  "code": "LC",
+  "name": "Saint Lucia",
+  "continent": "NA",
+  "ccn3": "662",
+  "un": true,
+  "observer": false,
+  "flag": "🇱🇨",
+  "lat": 13.8833,
+  "lon": -60.9667,
+  "alt": []
+ },
+ {
+  "code": "MF",
+  "name": "Saint Martin",
+  "continent": "NA",
+  "ccn3": "663",
+  "un": false,
+  "observer": false,
+  "flag": "🇲🇫",
+  "lat": 18.0833,
+  "lon": -63.95,
+  "alt": [
+   "Collectivity of Saint Martin",
+   "Collectivité de Saint-Martin",
+   "Saint Martin (French part)"
+  ]
+ },
+ {
+  "code": "PM",
+  "name": "Saint Pierre and Miquelon",
+  "continent": "NA",
+  "ccn3": "666",
+  "un": false,
+  "observer": false,
+  "flag": "🇵🇲",
+  "lat": 46.8333,
+  "lon": -56.3333,
+  "alt": [
+   "Collectivité territoriale de Saint-Pierre-et-Miquelon"
+  ]
+ },
+ {
+  "code": "VC",
+  "name": "Saint Vincent and the Grenadines",
+  "continent": "NA",
+  "ccn3": "670",
+  "un": true,
+  "observer": false,
+  "flag": "🇻🇨",
+  "lat": 13.25,
+  "lon": -61.2,
+  "alt": []
+ },
+ {
+  "code": "WS",
+  "name": "Samoa",
+  "continent": "OC",
+  "ccn3": "882",
+  "un": true,
+  "observer": false,
+  "flag": "🇼🇸",
+  "lat": -13.5833,
+  "lon": -172.3333,
+  "alt": [
+   "Independent State of Samoa",
+   "Malo Saʻoloto Tutoʻatasi o Sāmoa"
+  ]
+ },
+ {
+  "code": "SM",
+  "name": "San Marino",
+  "continent": "EU",
+  "ccn3": "674",
+  "un": true,
+  "observer": false,
+  "flag": "🇸🇲",
+  "lat": 43.7667,
+  "lon": 12.4167,
+  "alt": [
+   "Most Serene Republic of San Marino",
+   "Republic of San Marino",
+   "Repubblica di San Marino"
+  ]
+ },
+ {
+  "code": "ST",
+  "name": "São Tomé and Príncipe",
+  "continent": "AF",
+  "ccn3": "678",
+  "un": true,
+  "observer": false,
+  "flag": "🇸🇹",
+  "lat": 1,
+  "lon": 7,
+  "alt": [
+   "Democratic Republic of São Tomé and Príncipe",
+   "Sao Tome and Principe",
+   "República Democrática de São Tomé e Príncipe"
+  ]
+ },
+ {
+  "code": "SA",
+  "name": "Saudi Arabia",
+  "continent": "AS",
+  "ccn3": "682",
+  "un": true,
+  "observer": false,
+  "flag": "🇸🇦",
+  "lat": 25,
+  "lon": 45,
+  "alt": [
+   "Kingdom of Saudi Arabia",
+   "Saudi",
+   "Al-Mamlakah al-‘Arabiyyah as-Su‘ūdiyyah"
+  ]
+ },
+ {
+  "code": "SN",
+  "name": "Senegal",
+  "continent": "AF",
+  "ccn3": "686",
+  "un": true,
+  "observer": false,
+  "flag": "🇸🇳",
+  "lat": 14,
+  "lon": -14,
+  "alt": [
+   "Republic of Senegal",
+   "République du Sénégal"
+  ]
+ },
+ {
+  "code": "RS",
+  "name": "Serbia",
+  "continent": "EU",
+  "ccn3": "688",
+  "un": true,
+  "observer": false,
+  "flag": "🇷🇸",
+  "lat": 44,
+  "lon": 21,
+  "alt": [
+   "Republic of Serbia",
+   "Srbija",
+   "Republika Srbija",
+   "Србија",
+   "Република Србија"
+  ]
+ },
+ {
+  "code": "SC",
+  "name": "Seychelles",
+  "continent": "AF",
+  "ccn3": "690",
+  "un": true,
+  "observer": false,
+  "flag": "🇸🇨",
+  "lat": -4.5833,
+  "lon": 55.6667,
+  "alt": [
+   "Republic of Seychelles",
+   "Repiblik Sesel",
+   "République des Seychelles"
+  ]
+ },
+ {
+  "code": "SL",
+  "name": "Sierra Leone",
+  "continent": "AF",
+  "ccn3": "694",
+  "un": true,
+  "observer": false,
+  "flag": "🇸🇱",
+  "lat": 8.5,
+  "lon": -11.5,
+  "alt": [
+   "Republic of Sierra Leone"
+  ]
+ },
+ {
+  "code": "SG",
+  "name": "Singapore",
+  "continent": "AS",
+  "ccn3": "702",
+  "un": true,
+  "observer": false,
+  "flag": "🇸🇬",
+  "lat": 1.3667,
+  "lon": 103.8,
+  "alt": [
+   "Republic of Singapore",
+   "Singapura",
+   "Republik Singapura",
+   "新加坡共和国"
+  ]
+ },
+ {
+  "code": "SX",
+  "name": "Sint Maarten",
+  "continent": "NA",
+  "ccn3": "534",
+  "un": false,
+  "observer": false,
+  "flag": "🇸🇽",
+  "lat": 18.0333,
+  "lon": -63.05,
+  "alt": [
+   "Sint Maarten (Dutch part)"
+  ]
+ },
+ {
+  "code": "SK",
+  "name": "Slovakia",
+  "continent": "EU",
+  "ccn3": "703",
+  "un": true,
+  "observer": false,
+  "flag": "🇸🇰",
+  "lat": 48.6667,
+  "lon": 19.5,
+  "alt": [
+   "Slovak Republic",
+   "Slovenská republika"
+  ]
+ },
+ {
+  "code": "SI",
+  "name": "Slovenia",
+  "continent": "EU",
+  "ccn3": "705",
+  "un": true,
+  "observer": false,
+  "flag": "🇸🇮",
+  "lat": 46.1167,
+  "lon": 14.8167,
+  "alt": [
+   "Republic of Slovenia",
+   "Republika Slovenija"
+  ]
+ },
+ {
+  "code": "SB",
+  "name": "Solomon Islands",
+  "continent": "OC",
+  "ccn3": "090",
+  "un": true,
+  "observer": false,
+  "flag": "🇸🇧",
+  "lat": -8,
+  "lon": 159,
+  "alt": []
+ },
+ {
+  "code": "SO",
+  "name": "Somalia",
+  "continent": "AF",
+  "ccn3": "706",
+  "un": true,
+  "observer": false,
+  "flag": "🇸🇴",
+  "lat": 10,
+  "lon": 49,
+  "alt": [
+   "Federal Republic of Somalia",
+   "aṣ-Ṣūmāl",
+   "Jamhuuriyadda Federaalka Soomaaliya",
+   "Jumhūriyyat aṣ-Ṣūmāl al-Fiderāliyya"
+  ]
+ },
+ {
+  "code": "ZA",
+  "name": "South Africa",
+  "continent": "AF",
+  "ccn3": "710",
+  "un": true,
+  "observer": false,
+  "flag": "🇿🇦",
+  "lat": -29,
+  "lon": 24,
+  "alt": [
+   "Republic of South Africa",
+   "RSA",
+   "Suid-Afrika"
+  ]
+ },
+ {
+  "code": "GS",
+  "name": "South Georgia",
+  "continent": "AN",
+  "ccn3": "239",
+  "un": false,
+  "observer": false,
+  "flag": "🇬🇸",
+  "lat": -54.5,
+  "lon": -37,
+  "alt": [
+   "South Georgia and the South Sandwich Islands"
+  ]
+ },
+ {
+  "code": "KR",
+  "name": "South Korea",
+  "continent": "AS",
+  "ccn3": "410",
+  "un": true,
+  "observer": false,
+  "flag": "🇰🇷",
+  "lat": 37,
+  "lon": 127.5,
+  "alt": [
+   "Republic of Korea",
+   "Korea, Republic of",
+   "남한",
+   "남조선"
+  ]
+ },
+ {
+  "code": "SS",
+  "name": "South Sudan",
+  "continent": "AF",
+  "ccn3": "728",
+  "un": true,
+  "observer": false,
+  "flag": "🇸🇸",
+  "lat": 7,
+  "lon": 30,
+  "alt": [
+   "Republic of South Sudan"
+  ]
+ },
+ {
+  "code": "ES",
+  "name": "Spain",
+  "continent": "EU",
+  "ccn3": "724",
+  "un": true,
+  "observer": false,
+  "flag": "🇪🇸",
+  "lat": 40,
+  "lon": -4,
+  "alt": [
+   "Kingdom of Spain",
+   "Reino de España"
+  ]
+ },
+ {
+  "code": "LK",
+  "name": "Sri Lanka",
+  "continent": "AS",
+  "ccn3": "144",
+  "un": true,
+  "observer": false,
+  "flag": "🇱🇰",
+  "lat": 7,
+  "lon": 81,
+  "alt": [
+   "Democratic Socialist Republic of Sri Lanka",
+   "ilaṅkai"
+  ]
+ },
+ {
+  "code": "SD",
+  "name": "Sudan",
+  "continent": "AF",
+  "ccn3": "729",
+  "un": true,
+  "observer": false,
+  "flag": "🇸🇩",
+  "lat": 15,
+  "lon": 30,
+  "alt": [
+   "Republic of the Sudan",
+   "Jumhūrīyat as-Sūdān"
+  ]
+ },
+ {
+  "code": "SR",
+  "name": "Suriname",
+  "continent": "SA",
+  "ccn3": "740",
+  "un": true,
+  "observer": false,
+  "flag": "🇸🇷",
+  "lat": 4,
+  "lon": -56,
+  "alt": [
+   "Republic of Suriname",
+   "Sarnam",
+   "Sranangron",
+   "Republiek Suriname"
+  ]
+ },
+ {
+  "code": "SE",
+  "name": "Sweden",
+  "continent": "EU",
+  "ccn3": "752",
+  "un": true,
+  "observer": false,
+  "flag": "🇸🇪",
+  "lat": 62,
+  "lon": 15,
+  "alt": [
+   "Kingdom of Sweden",
+   "Konungariket Sverige"
+  ]
+ },
+ {
+  "code": "CH",
+  "name": "Switzerland",
+  "continent": "EU",
+  "ccn3": "756",
+  "un": true,
+  "observer": false,
+  "flag": "🇨🇭",
+  "lat": 47,
+  "lon": 8,
+  "alt": [
+   "Swiss Confederation",
+   "Schweiz",
+   "Suisse",
+   "Svizzera",
+   "Svizra"
+  ]
+ },
+ {
+  "code": "SY",
+  "name": "Syria",
+  "continent": "AS",
+  "ccn3": "760",
+  "un": true,
+  "observer": false,
+  "flag": "🇸🇾",
+  "lat": 35,
+  "lon": 38,
+  "alt": [
+   "Syrian Arab Republic",
+   "Al-Jumhūrīyah Al-ʻArabīyah As-Sūrīyah"
+  ]
+ },
+ {
+  "code": "TW",
+  "name": "Taiwan",
+  "continent": "AS",
+  "ccn3": "158",
+  "un": false,
+  "observer": false,
+  "flag": "🇹🇼",
+  "lat": 23.5,
+  "lon": 121,
+  "alt": [
+   "Republic of China (Taiwan)",
+   "Táiwān",
+   "Republic of China",
+   "中華民國",
+   "Zhōnghuá Mínguó",
+   "Chinese Taipei"
+  ]
+ },
+ {
+  "code": "TJ",
+  "name": "Tajikistan",
+  "continent": "AS",
+  "ccn3": "762",
+  "un": true,
+  "observer": false,
+  "flag": "🇹🇯",
+  "lat": 39,
+  "lon": 71,
+  "alt": [
+   "Republic of Tajikistan",
+   "Toçikiston",
+   "Ҷумҳурии Тоҷикистон",
+   "Çumhuriyi Toçikiston"
+  ]
+ },
+ {
+  "code": "TZ",
+  "name": "Tanzania",
+  "continent": "AF",
+  "ccn3": "834",
+  "un": true,
+  "observer": false,
+  "flag": "🇹🇿",
+  "lat": -6,
+  "lon": 35,
+  "alt": [
+   "United Republic of Tanzania",
+   "Tanzania, United Republic of",
+   "Jamhuri ya Muungano wa Tanzania"
+  ]
+ },
+ {
+  "code": "TH",
+  "name": "Thailand",
+  "continent": "AS",
+  "ccn3": "764",
+  "un": true,
+  "observer": false,
+  "flag": "🇹🇭",
+  "lat": 15,
+  "lon": 100,
+  "alt": [
+   "Kingdom of Thailand",
+   "Prathet",
+   "Thai",
+   "ราชอาณาจักรไทย",
+   "Ratcha Anachak Thai"
+  ]
+ },
+ {
+  "code": "TL",
+  "name": "Timor-Leste",
+  "continent": "AS",
+  "ccn3": "626",
+  "un": true,
+  "observer": false,
+  "flag": "🇹🇱",
+  "lat": -8.8333,
+  "lon": 125.9167,
+  "alt": [
+   "Democratic Republic of Timor-Leste",
+   "East Timor",
+   "Timor",
+   "República Democrática de Timor-Leste",
+   "Repúblika Demokrátika Timór-Leste",
+   "Timór Lorosa'e",
+   "Timor Lorosae"
+  ]
+ },
+ {
+  "code": "TG",
+  "name": "Togo",
+  "continent": "AF",
+  "ccn3": "768",
+  "un": true,
+  "observer": false,
+  "flag": "🇹🇬",
+  "lat": 8,
+  "lon": 1.1667,
+  "alt": [
+   "Togolese Republic",
+   "Togolese",
+   "République Togolaise"
+  ]
+ },
+ {
+  "code": "TK",
+  "name": "Tokelau",
+  "continent": "OC",
+  "ccn3": "772",
+  "un": false,
+  "observer": false,
+  "flag": "🇹🇰",
+  "lat": -9,
+  "lon": -172,
+  "alt": []
+ },
+ {
+  "code": "TO",
+  "name": "Tonga",
+  "continent": "OC",
+  "ccn3": "776",
+  "un": true,
+  "observer": false,
+  "flag": "🇹🇴",
+  "lat": -20,
+  "lon": -175,
+  "alt": [
+   "Kingdom of Tonga"
+  ]
+ },
+ {
+  "code": "TT",
+  "name": "Trinidad and Tobago",
+  "continent": "NA",
+  "ccn3": "780",
+  "un": true,
+  "observer": false,
+  "flag": "🇹🇹",
+  "lat": 11,
+  "lon": -61,
+  "alt": [
+   "Republic of Trinidad and Tobago"
+  ]
+ },
+ {
+  "code": "TN",
+  "name": "Tunisia",
+  "continent": "AF",
+  "ccn3": "788",
+  "un": true,
+  "observer": false,
+  "flag": "🇹🇳",
+  "lat": 34,
+  "lon": 9,
+  "alt": [
+   "Tunisian Republic",
+   "Republic of Tunisia",
+   "al-Jumhūriyyah at-Tūnisiyyah"
+  ]
+ },
+ {
+  "code": "TR",
+  "name": "Türkiye",
+  "continent": "AS",
+  "ccn3": "792",
+  "un": true,
+  "observer": false,
+  "flag": "🇹🇷",
+  "lat": 39,
+  "lon": 35,
+  "alt": [
+   "Republic of Türkiye",
+   "Turkiye",
+   "Republic of Turkey",
+   "Türkiye Cumhuriyeti"
+  ]
+ },
+ {
+  "code": "TM",
+  "name": "Turkmenistan",
+  "continent": "AS",
+  "ccn3": "795",
+  "un": true,
+  "observer": false,
+  "flag": "🇹🇲",
+  "lat": 40,
+  "lon": 60,
+  "alt": []
+ },
+ {
+  "code": "TC",
+  "name": "Turks and Caicos Islands",
+  "continent": "NA",
+  "ccn3": "796",
+  "un": false,
+  "observer": false,
+  "flag": "🇹🇨",
+  "lat": 21.75,
+  "lon": -71.5833,
+  "alt": []
+ },
+ {
+  "code": "TV",
+  "name": "Tuvalu",
+  "continent": "OC",
+  "ccn3": "798",
+  "un": true,
+  "observer": false,
+  "flag": "🇹🇻",
+  "lat": -8,
+  "lon": 178,
+  "alt": []
+ },
+ {
+  "code": "UG",
+  "name": "Uganda",
+  "continent": "AF",
+  "ccn3": "800",
+  "un": true,
+  "observer": false,
+  "flag": "🇺🇬",
+  "lat": 1,
+  "lon": 32,
+  "alt": [
+   "Republic of Uganda",
+   "Jamhuri ya Uganda"
+  ]
+ },
+ {
+  "code": "UA",
+  "name": "Ukraine",
+  "continent": "EU",
+  "ccn3": "804",
+  "un": true,
+  "observer": false,
+  "flag": "🇺🇦",
+  "lat": 49,
+  "lon": 32,
+  "alt": [
+   "Ukrayina"
+  ]
+ },
+ {
+  "code": "AE",
+  "name": "United Arab Emirates",
+  "continent": "AS",
+  "ccn3": "784",
+  "un": true,
+  "observer": false,
+  "flag": "🇦🇪",
+  "lat": 24,
+  "lon": 54,
+  "alt": [
+   "UAE",
+   "Emirates"
+  ]
+ },
+ {
+  "code": "GB",
+  "name": "United Kingdom",
+  "continent": "EU",
+  "ccn3": "826",
+  "un": true,
+  "observer": false,
+  "flag": "🇬🇧",
+  "lat": 54,
+  "lon": -2,
+  "alt": [
+   "United Kingdom of Great Britain and Northern Ireland",
+   "UK",
+   "Great Britain"
+  ]
+ },
+ {
+  "code": "US",
+  "name": "United States",
+  "continent": "NA",
+  "ccn3": "840",
+  "un": true,
+  "observer": false,
+  "flag": "🇺🇸",
+  "lat": 38,
+  "lon": -97,
+  "alt": [
+   "United States of America",
+   "USA"
+  ]
+ },
+ {
+  "code": "UM",
+  "name": "United States Minor Outlying Islands",
+  "continent": "OC",
+  "ccn3": "581",
+  "un": false,
+  "observer": false,
+  "flag": "🇺🇲",
+  "lat": 19.3,
+  "lon": 166.6333,
+  "alt": []
+ },
+ {
+  "code": "VI",
+  "name": "United States Virgin Islands",
+  "continent": "NA",
+  "ccn3": "850",
+  "un": false,
+  "observer": false,
+  "flag": "🇻🇮",
+  "lat": 18.35,
+  "lon": -64.9333,
+  "alt": [
+   "Virgin Islands of the United States",
+   "Virgin Islands, U.S."
+  ]
+ },
+ {
+  "code": "ZZ",
+  "name": "Unknown or unassigned country",
+  "continent": "AF",
+  "ccn3": null,
+  "un": false,
+  "observer": false,
+  "flag": "",
+  "lat": null,
+  "lon": null,
+  "alt": []
+ },
+ {
+  "code": "UY",
+  "name": "Uruguay",
+  "continent": "SA",
+  "ccn3": "858",
+  "un": true,
+  "observer": false,
+  "flag": "🇺🇾",
+  "lat": -33,
+  "lon": -56,
+  "alt": [
+   "Oriental Republic of Uruguay",
+   "República Oriental del Uruguay"
+  ]
+ },
+ {
+  "code": "UZ",
+  "name": "Uzbekistan",
+  "continent": "AS",
+  "ccn3": "860",
+  "un": true,
+  "observer": false,
+  "flag": "🇺🇿",
+  "lat": 41,
+  "lon": 64,
+  "alt": [
+   "Republic of Uzbekistan",
+   "O‘zbekiston Respublikasi",
+   "Ўзбекистон Республикаси"
+  ]
+ },
+ {
+  "code": "VU",
+  "name": "Vanuatu",
+  "continent": "OC",
+  "ccn3": "548",
+  "un": true,
+  "observer": false,
+  "flag": "🇻🇺",
+  "lat": -16,
+  "lon": 167,
+  "alt": [
+   "Republic of Vanuatu",
+   "Ripablik blong Vanuatu",
+   "République de Vanuatu"
+  ]
+ },
+ {
+  "code": "VA",
+  "name": "Vatican City",
+  "continent": "EU",
+  "ccn3": "336",
+  "un": false,
+  "observer": true,
+  "flag": "🇻🇦",
+  "lat": 41.9,
+  "lon": 12.45,
+  "alt": [
+   "Vatican City State",
+   "Holy See (Vatican City State)",
+   "Vatican",
+   "Stato della Città del Vaticano"
+  ]
+ },
+ {
+  "code": "VE",
+  "name": "Venezuela",
+  "continent": "SA",
+  "ccn3": "862",
+  "un": true,
+  "observer": false,
+  "flag": "🇻🇪",
+  "lat": 8,
+  "lon": -66,
+  "alt": [
+   "Bolivarian Republic of Venezuela",
+   "Venezuela, Bolivarian Republic of",
+   "República Bolivariana de Venezuela"
+  ]
+ },
+ {
+  "code": "VN",
+  "name": "Vietnam",
+  "continent": "AS",
+  "ccn3": "704",
+  "un": true,
+  "observer": false,
+  "flag": "🇻🇳",
+  "lat": 16.1667,
+  "lon": 107.8333,
+  "alt": [
+   "Socialist Republic of Vietnam",
+   "Cộng hòa Xã hội chủ nghĩa Việt Nam",
+   "Viet Nam"
+  ]
+ },
+ {
+  "code": "WF",
+  "name": "Wallis and Futuna",
+  "continent": "OC",
+  "ccn3": "876",
+  "un": false,
+  "observer": false,
+  "flag": "🇼🇫",
+  "lat": -13.3,
+  "lon": -176.2,
+  "alt": [
+   "Territory of the Wallis and Futuna Islands",
+   "Territoire des îles Wallis et Futuna"
+  ]
+ },
+ {
+  "code": "EH",
+  "name": "Western Sahara",
+  "continent": "AF",
+  "ccn3": "732",
+  "un": false,
+  "observer": false,
+  "flag": "🇪🇭",
+  "lat": 24.5,
+  "lon": -13,
+  "alt": [
+   "Sahrawi Arab Democratic Republic",
+   "Taneẓroft Tutrimt"
+  ]
+ },
+ {
+  "code": "YE",
+  "name": "Yemen",
+  "continent": "AS",
+  "ccn3": "887",
+  "un": true,
+  "observer": false,
+  "flag": "🇾🇪",
+  "lat": 15,
+  "lon": 48,
+  "alt": [
+   "Republic of Yemen",
+   "Yemeni Republic",
+   "al-Jumhūriyyah al-Yamaniyyah"
+  ]
+ },
+ {
+  "code": "ZM",
+  "name": "Zambia",
+  "continent": "AF",
+  "ccn3": "894",
+  "un": true,
+  "observer": false,
+  "flag": "🇿🇲",
+  "lat": -15,
+  "lon": 30,
+  "alt": [
+   "Republic of Zambia"
+  ]
+ },
+ {
+  "code": "ZW",
+  "name": "Zimbabwe",
+  "continent": "AF",
+  "ccn3": "716",
+  "un": true,
+  "observer": false,
+  "flag": "🇿🇼",
+  "lat": -20,
+  "lon": 30,
+  "alt": [
+   "Republic of Zimbabwe"
+  ]
+ }
+]

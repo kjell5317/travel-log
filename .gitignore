@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.DS_Store
+
+# Your travel log stays on your machine; only the example is part of the repository.
+data/*
+!data/travel.example.json

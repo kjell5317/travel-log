@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "trips": [
+    {
+      "id": "ex-barcelona",
+      "name": "Barcelona weekend",
+      "date": "2016-Q2",
+      "legs": [
+        ["FRA", "BCN"],
+        ["BCN", "FRA"]
+      ]
+    },
+    {
+      "id": "ex-amsterdam",
+      "name": "Amsterdam by train",
+      "date": "2017",
+      "legs": [
+        ["FRA", "AMS"],
+        ["AMS", "FRA"]
+      ],
+      "noFlight": true
+    },
+    {
+      "id": "ex-thailand",
+      "name": "Thailand",
+      "date": "2018-Q1",
+      "legs": [
+        ["FRA", "DXB", "BKK"],
+        ["BKK", "HKT"],
+        ["HKT", "BKK", "DXB", "FRA"]
+      ]
+    },
+    {
+      "id": "ex-alps",
+      "name": "Alps by train",
+      "legs": [
+        ["MUC", "LI"],
+        ["LI", "ZRH"],
+        ["ZRH", "MUC"]
+      ],
+      "noFlight": true
+    },
+    {
+      "id": "ex-newyork",
+      "name": "New York",
+      "date": "2019-Q4",
+      "legs": [
+        ["FRA", "JFK"],
+        ["JFK", "FRA"]
+      ]
+    },
+    {
+      "id": "ex-pyrenees",
+      "name": "Barcelona and Andorra",
+      "date": "2022-Q3",
+      "legs": [
+        ["FRA", "BCN"],
+        ["AD"],
+        ["BCN", "FRA"]
+      ]
+    },
+    {
+      "id": "ex-lisbon",
+      "name": "Lisbon",
+      "date": "2023-Q4",
+      "legs": [
+        ["FRA", "LIS"],
+        ["LIS", "FRA"]
+      ]
+    },
+    {
+      "id": "ex-japan",
+      "name": "Japan",
+      "date": "2027-Q2",
+      "legs": [
+        ["FRA", "HEL", "NRT"],
+        ["KIX", "HEL", "FRA"]
+      ],
+      "planned": true
+    }
+  ],
+  "extraCountries": ["AT"],
+  "extraCities": [{ "name": "Heidelberg", "country": "DE", "lat": 49.4077, "lon": 8.6908 }],
+  "customAirports": {},
+  "settings": { "countryBasis": "un+observers", "homeCountry": "DE" }
+}
