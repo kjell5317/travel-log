@@ -39,6 +39,11 @@ const EXTRA_CODES = {
   ZPD: ['Oldenburg (Oldb) Hauptbahnhof', 'Oldenburg', 'DE', 53.1439, 8.2222, 'R'],
 };
 
+// Airports labelled by a city the served-city rule doesn't pick (see addServedCities), e.g. one under 200,000.
+const SERVED_CITIES = {
+  OST: 'Bruges',
+};
+
 // world-countries lists the Vatican as a UN member; it is a permanent observer.
 const UN_OBSERVERS = new Set(['VA', 'PS']);
 
@@ -307,6 +312,7 @@ async function main() {
 
   for (const [code, row] of Object.entries(EXTRA_CODES)) airports[code] ??= row;
   const served = addServedCities(airports, cityData);
+  for (const [code, city] of Object.entries(SERVED_CITIES)) if (airports[code]) airports[code][6] = city;
 
   const sortedAirports = Object.fromEntries(Object.entries(airports).sort(([a], [b]) => a.localeCompare(b)));
 

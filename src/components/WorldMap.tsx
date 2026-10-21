@@ -9,7 +9,7 @@ import type { GeometryCollection, Topology } from 'topojson-specification';
 import world from 'world-atlas/countries-50m.json';
 import { fmtInt, fmtKm, plural } from '../lib/format';
 import { countryByCcn3, countryName } from '../lib/reference';
-import { surfaceLayer, type Hop } from '../lib/routes';
+import { isDomestic, surfaceLayer, type Hop } from '../lib/routes';
 import { aggregate, visitStatus, type AirportStat, type RouteStat, type TravelStats } from '../lib/stats';
 import type { Airport, CountryCode, Selection } from '../types';
 import { FutureSwitch } from './FutureSwitch';
@@ -96,7 +96,7 @@ export function WorldMap({ stats, tripFilter, selection, onSelect, showFuture, h
   const [transform, setTransform] = useState<ZoomTransform>(zoomIdentity);
   const [tooltip, setTooltip] = useState<Tooltip | null>(null);
   const [routeMode, setRouteModeState] = useState(readRouteMode);
-  // No-flight connections into and out of the home country are hidden unless this is on.
+  // Routes inside the home country and short no-flight trips out of it and back are hidden unless this is on.
   const [showHomeRoutes, setShowHomeRoutesState] = useState(readHomeRoutes);
   const setShowHomeRoutes = (on: boolean) => {
     setShowHomeRoutesState(on);
@@ -183,17 +183,16 @@ export function WorldMap({ stats, tripFilter, selection, onSelect, showFuture, h
     // Trips without flights: one line per pair of places, plus a small dot for places without an airport dot.
     const drawn = new Set(showAirports ? flown.airports.map((a) => a.code) : []);
     const home = stats.countries.find((c) => c.home)?.code;
-    const hopsByTrip = new Map<number, Hop[]>();
-    // Travel without flying inside a flight trip isn't a way out of or back home, so it's always drawn.
-    const keptHops: Hop[][] = [];
+    // The legs of each no-flight trip; a part of a flight trip that wasn't flown is a trip of one leg.
+    const legsByTrip = new Map<number, Hop[][]>();
+    const parts: Hop[][][] = [];
     for (const leg of stats.surfaceLegs) {
       if (tripFilter != null && leg.tripIndex !== tripFilter) continue;
-      const hops = leg.noFlightTrip ? (hopsByTrip.get(leg.tripIndex) ?? []) : [];
-      for (let i = 0; i < leg.places.length - 1; i++) hops.push({ a: leg.places[i], b: leg.places[i + 1], planned: leg.planned });
-      if (leg.noFlightTrip) hopsByTrip.set(leg.tripIndex, hops);
-      else keptHops.push(hops);
+      const hops = leg.places.slice(1).map((b, i) => ({ a: leg.places[i], b, planned: leg.planned }));
+      if (leg.noFlightTrip) legsByTrip.set(leg.tripIndex, [...(legsByTrip.get(leg.tripIndex) ?? []), hops]);
+      else parts.push([hops]);
     }
-    const { segments, stops } = surfaceLayer([...hopsByTrip.values()], showHomeRoutes ? undefined : home, drawn, keptHops);
+    const { segments, stops } = surfaceLayer([...legsByTrip.values(), ...parts], showHomeRoutes ? undefined : home, drawn);
     return { ...flown, surface: segments, stops };
   }, [stats, tripFilter, showAirports, showHomeRoutes]);
 
@@ -240,13 +239,21 @@ export function WorldMap({ stats, tripFilter, selection, onSelect, showFuture, h
   const selectedAirport = selection?.kind === 'airport' ? selection.code : null;
   const selectedCountry = selection?.kind === 'country' ? selection.code : null;
 
+  // Hidden home routes include flights inside the home country, except a selected one.
+  const routes =
+    homeCountry && !showHomeRoutes
+      ? visible.routes.filter(
+          (r) => !isDomestic(stats.airportByCode.get(r.a)?.airport, stats.airportByCode.get(r.b)?.airport, homeCountry) || r.flights.includes(selectedFlight?.index ?? -1),
+        )
+      : visible.routes;
+
   const routeState = (route: RouteStat): 'normal' | 'after' | 'dim' => {
     if (selectedFlight) return route.flights.some((i) => i < selectedFlight.index) ? 'normal' : 'after';
     if (selectedAirport) return route.a === selectedAirport || route.b === selectedAirport ? 'normal' : 'dim';
     return 'normal';
   };
 
-  const maxCount = Math.max(1, ...visible.routes.map((r) => r.count));
+  const maxCount = Math.max(1, ...routes.map((r) => r.count));
   // Thick enough that dashed (planned) routes stay visible; more flights on a route make it thicker.
   const routeWidth = (count: number) => 2 + 2 * Math.sqrt((count - 1) / Math.max(1, maxCount - 1));
 
@@ -315,7 +322,7 @@ export function WorldMap({ stats, tripFilter, selection, onSelect, showFuture, h
             </g>
           )}
           <g className="routes">
-            {showFlights && visible.routes.map((route) => {
+            {showFlights && routes.map((route) => {
               const d = lineFor(route);
               if (!d) return null;
               const state = routeState(route);
@@ -496,8 +503,8 @@ export function WorldMap({ stats, tripFilter, selection, onSelect, showFuture, h
             </option>
           ))}
         </select>
-        {homeCountry && showSurface && (
-          <label className="pill-switch" title={`Show no-flight connections into and out of ${countryName(homeCountry)}`}>
+        {homeCountry && routeMode !== 'none' && (
+          <label className="pill-switch" title={`Show routes inside ${countryName(homeCountry)} and no-flight trips that just go out of it and back`}>
             <input type="checkbox" role="switch" checked={showHomeRoutes} onChange={(e) => setShowHomeRoutes(e.target.checked)} />
             <span className="switch" aria-hidden />
             Home routes
@@ -521,7 +528,7 @@ export function WorldMap({ stats, tripFilter, selection, onSelect, showFuture, h
       <MapLegend
         hasHome={stats.countries.some((c) => c.home)}
         flightSelected={Boolean(selectedFlight)}
-        showFlights={showFlights && visible.routes.length > 0}
+        showFlights={showFlights && routes.length > 0}
         showSurface={showSurface && visible.surface.length > 0}
         showPlanned={showFuture}
       />

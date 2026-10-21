@@ -63,8 +63,7 @@ the *Countries over time* chart on a real time axis; undated trips are placed be
   flight from ALF to OSL, and `(RVN-ALF)` alone on a line is a whole leg without flying. These parts count like a
   no-flight trip and are drawn as green lines.
 - **No flight** — trips by train, bus, car or boat. Use the nearest airport codes to mark the places. They count
-  for countries, not for flights, airports or distance flown, and are drawn as green lines. Their way out of and
-  back into your home country isn't drawn by default (it clutters the map); switch on *Home routes* to see it.
+  for countries, not for flights, airports or distance flown, and are drawn as green lines.
 - **Planned** — trips you haven't made yet. They're ignored until you turn on *Future* on the map or statistics
   page; then countries and airports you'd visit for the first time turn amber, their routes are dashed, and the
   statistics show what they would add.
@@ -91,8 +90,10 @@ add the other places you visited (e.g. Hong Kong, Kosovo) to both the count and 
 ## Using the app
 
 **Map.** The routes menu shows *All routes*, only *Flights*, only travel with *No flights*, or *No routes* (just the
-places you've been to). *Show* filters the map to one trip and zooms to it. Click a flight, airport or country for
-details; use ← / → to step through your flights in order; ✎ opens a trip in the editor.
+places you've been to). Routes inside your home country (flights too) and no-flight trips that just go out of it and
+back in two legs clutter the map around home, so they aren't drawn by default; switch on *Home routes* to see them.
+*Show* filters the map to one trip and zooms to it. Click a flight, airport or country for details; use ← / → to
+step through your flights in order; ✎ opens a trip in the editor.
 
 **Statistics.** Pick what counts as a country at the top, then scroll through the chart, flight mix, records,
 countries and airports. With *Future* on, a card shows what your planned trips would add.
@@ -163,7 +164,8 @@ The app ships with prepared data in `src/data/`, built by `npm run update-data` 
 
 `src/data/airports.json` and `src/data/countries.json` are derived from ODbL databases and are therefore made
 available under the ODbL 1.0; `src/data/cities.json` is derived from GeoNames under CC BY 4.0. A few codes that
-none of the sources list (such as the rail station code ZPD) are added in `scripts/build-data.mjs` (`EXTRA_CODES`).
+none of the sources list (such as the rail station code ZPD) are added in `scripts/build-data.mjs` (`EXTRA_CODES`), and
+airports labelled by a city the sources don't give (Bruges for OST) are set there too (`SERVED_CITIES`).
 
 ## Development
 

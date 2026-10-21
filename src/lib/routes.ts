@@ -3,25 +3,19 @@ import type { Airport, CountryCode } from '../types';
 /** One step travelled without flying, between two consecutive places. */
 export type Hop = { a: Airport | undefined; b: Airport | undefined; planned: boolean };
 
+/** A route that starts and ends in the home country. */
+export const isDomestic = (a: Pick<Airport, 'country'> | undefined, b: Pick<Airport, 'country'> | undefined, home: CountryCode) =>
+  a?.country === home && b?.country === home;
+
 /**
- * Drops the way out of the home country at the start of a no-flight trip and the way back at its end
- * (plus any travel inside the home country before leaving / after returning): those lines all
- * converge on home and only clutter the map. Trips that stay inside the home country are kept.
+ * The hops of a trip (one list per leg) that get a line when home routes are hidden: none inside the home
+ * country, and none of a short trip that just goes out of it and back in two legs. Those lines clutter the
+ * map around home without saying much.
  */
-export function withoutHomeConnections(hops: Hop[], home: CountryCode): Hop[] {
-  // Way out: the leading hops that start at home, up to the first one that crosses the border.
-  let leading = 0;
-  while (leading < hops.length && hops[leading].a?.country === home) leading++;
-  const out = hops.findIndex((hop, i) => i < leading && hop.b && hop.b.country !== home);
-  const from = out === -1 ? 0 : out + 1;
-
-  // Way home: the trailing hops that end at home, from the last one that crosses the border.
-  let trailing = hops.length;
-  while (trailing > 0 && hops[trailing - 1].b?.country === home) trailing--;
-  const back = hops.findIndex((hop, i) => i >= trailing && hop.a && hop.a.country !== home);
-  const to = back === -1 ? hops.length : back;
-
-  return from < to ? hops.slice(from, to) : [];
+export function withoutHomeRoutes(legs: Hop[][], home: CountryCode): Hop[] {
+  const [out, back] = legs;
+  if (legs.length === 2 && out[0]?.a?.country === home && out.at(-1)?.b?.country !== home && back.at(-1)?.b?.country === home) return [];
+  return legs.flat().filter((hop) => !isDomestic(hop.a, hop.b, home));
 }
 
 export interface SurfaceSegment {
@@ -37,15 +31,17 @@ export interface SurfaceStop {
 }
 
 /**
- * Lines and dots for no-flight trips (one list of hops per trip). The way out of / back into the home
- * country gets no line, but its cities still get a dot. `kept` hops (travel without flying inside flight
- * trips) are always drawn. Places in `skip` (already drawn as airports) get no dot. Lines and dots count
- * as planned only when every trip through them is planned.
+ * Lines and dots for travel without flying (one list of legs per trip, each a list of hops). With a `home`
+ * country, home routes get no line (see withoutHomeRoutes), but their cities still get a dot. Places in
+ * `skip` (already drawn as airports) get no dot. Lines and dots count as planned only when every trip
+ * through them is planned.
  */
-export function surfaceLayer(trips: Hop[][], home: CountryCode | undefined, skip: Set<string>, kept: Hop[][] = []) {
+export function surfaceLayer(trips: Hop[][][], home: CountryCode | undefined, skip: Set<string>) {
   const segments = new Map<string, SurfaceSegment>();
   const stops = new Map<string, SurfaceStop>();
-  const add = (hops: Hop[], drawn: Set<Hop>) => {
+  for (const legs of trips) {
+    const hops = legs.flat();
+    const drawn = new Set(home ? withoutHomeRoutes(legs, home) : hops);
     for (const hop of hops) {
       const { a, b, planned } = hop;
       for (const p of [a, b]) {
@@ -58,8 +54,6 @@ export function surfaceLayer(trips: Hop[][], home: CountryCode | undefined, skip
       const key = [a.code, b.code].sort().join('-');
       segments.set(key, { key, a, b, planned: planned && (segments.get(key)?.planned ?? true) });
     }
-  };
-  for (const hops of trips) add(hops, new Set(home ? withoutHomeConnections(hops, home) : hops));
-  for (const hops of kept) add(hops, new Set(hops));
+  }
   return { segments: [...segments.values()], stops: [...stops.values()] };
 }
