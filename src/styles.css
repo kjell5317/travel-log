@@ -218,6 +218,14 @@ code {
   background: var(--hover);
   font-weight: 600;
 }
+.demo-banner {
+  margin: 0 0 0 auto;
+  font-size: 12.5px;
+  color: var(--ink-2);
+}
+.demo-banner a {
+  color: var(--accent);
+}
 .dirty-dot {
   display: inline-block;
   width: 7px;
@@ -1355,8 +1363,28 @@ table + table {
     columns: 1;
   }
   .app-header {
-    gap: 12px;
-    padding: 0 12px;
+    gap: 4px 12px;
+    padding: 8px 12px;
+    height: auto;
+    min-height: 52px;
+    flex-wrap: wrap;
+  }
+  .demo-banner {
+    margin: 0;
+    flex-basis: 100%;
+  }
+  /* Keep the map's top controls clear of the zoom buttons and let them wrap. */
+  .map-options {
+    left: 52px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+  .pill-switch,
+  .future-switch {
+    padding: 4px 9px;
+    font-size: 12px;
+    white-space: nowrap;
   }
 }
 

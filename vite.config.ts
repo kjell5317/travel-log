@@ -6,6 +6,8 @@ import { travelDataApi } from './server/dataApi.ts';
 const dataDir = path.resolve(import.meta.dirname, 'data');
 
 export default defineConfig({
+  // GitHub Pages serves a project site under /<repository>/; the deploy workflow sets BASE_PATH.
+  base: process.env.BASE_PATH || '/',
   plugins: [react(), travelDataApi(dataDir)],
   server: {
     port: 5317,

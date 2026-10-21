@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import exampleJson from '../../data/travel.example.json';
 import type { CountryBasis, TravelData } from '../types';
 import { parseTripDate, toDateString } from './dates';
 import { countryByCode } from './reference';
@@ -42,6 +43,28 @@ export function normalizeData(raw: Partial<TravelData> | null): TravelData {
   };
 }
 
+/** The example travel log (data/travel.example.json), shown by "Load example" and in the demo. */
+export function exampleData(): TravelData {
+  return normalizeData(exampleJson as Partial<TravelData>);
+}
+
+/**
+ * Demo build (`npm run build:demo`, e.g. on GitHub Pages): there is no server to save to, so the app starts
+ * with the example and keeps changes in this browser only.
+ */
+export const DEMO = import.meta.env.VITE_DEMO === 'true';
+const DEMO_KEY = 'travel.demo';
+
+function readDemoData(): TravelData {
+  try {
+    const stored = localStorage.getItem(DEMO_KEY);
+    if (stored) return normalizeData(JSON.parse(stored));
+  } catch {
+    // Unreadable or unavailable storage: start from the example.
+  }
+  return exampleData();
+}
+
 export function newTripId(): string {
   return crypto.randomUUID().slice(0, 8);
 }
@@ -51,6 +74,10 @@ export function useTravelData() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    if (DEMO) {
+      setData(readDemoData());
+      return;
+    }
     fetch('/api/data')
       .then((res) => {
         if (!res.ok) throw new Error(`Loading data failed (${res.status})`);
@@ -61,6 +88,15 @@ export function useTravelData() {
   }, []);
 
   const save = useCallback(async (next: TravelData) => {
+    if (DEMO) {
+      try {
+        localStorage.setItem(DEMO_KEY, JSON.stringify(next));
+      } catch {
+        // Not kept after a reload when storage is unavailable, but works for this visit.
+      }
+      setData(next);
+      return;
+    }
     const res = await fetch('/api/data', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },

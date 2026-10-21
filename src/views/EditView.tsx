@@ -5,7 +5,7 @@ import { distanceKm } from '../lib/geo';
 import { formatHeading, legsToText, parseHeading, parseLegs, parseLog, type Issue } from '../lib/parse';
 import { CONTINENTS, countryByCode, searchAirports, searchCities, searchCountries, type AirportLookup, type CityResult } from '../lib/reference';
 import { computeStats, orderTrips, splitAtCountries, type TravelStats } from '../lib/stats';
-import { newTripId } from '../lib/store';
+import { DEMO, newTripId } from '../lib/store';
 import type { Country, CountryCode, ExtraCity, IATA, TravelData, Trip } from '../types';
 
 interface Props {
@@ -153,7 +153,10 @@ export function EditView({ data, stats, lookup, active, editRequest, onSave, onL
       setDrafts(toDrafts(trips));
       if (mode === 'text') setLogText(draftsToLog(toDrafts(trips)));
       const planned = trips.filter((t) => t.planned).length;
-      setStatus({ kind: 'ok', text: `Saved ${plural(trips.length - planned, 'trip')}${planned ? ` and ${planned} planned` : ''} to data/travel.json` });
+      setStatus({
+        kind: 'ok',
+        text: `Saved ${plural(trips.length - planned, 'trip')}${planned ? ` and ${planned} planned` : ''} ${DEMO ? 'in this browser' : 'to data/travel.json'}`,
+      });
     } catch (err) {
       setStatus({ kind: 'error', text: String(err) });
     } finally {

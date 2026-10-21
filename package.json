@@ -10,6 +10,7 @@
     "start": "vite --open",
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
+    "build:demo": "tsc --noEmit && vite build --mode demo",
     "preview": "vite preview --open",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",

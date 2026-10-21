@@ -5,6 +5,8 @@ statistics: which countries you've been to, which airports you used and how ofte
 over time, and what a planned trip would add. You enter trips as simple lists of airport codes (`FRA-DXB-BKK`);
 no dates, accounts or internet connection are needed.
 
+**[Try the demo](https://kjell5317.github.io/travel-log/)** — it runs in your browser with example data.
+
 ![The map with the example data](docs/map.png)
 
 ## Features
@@ -165,6 +167,7 @@ none of the sources list (such as the rail station code ZPD) are added in `scrip
 | `npm test`            | Runs the unit tests (parsing, statistics, search, map rules)     |
 | `npm run typecheck`   | Type-checks the project                                          |
 | `npm run build`       | Production build; `npm run preview` serves it, including saving  |
+| `npm run build:demo`  | Static demo build for GitHub Pages (see below)                   |
 | `npm run update-data` | Downloads the sources above and rebuilds `src/data/`             |
 
 The app is React + TypeScript on [Vite](https://vite.dev/), with [d3-geo](https://github.com/d3/d3-geo) for the
@@ -184,3 +187,13 @@ data/          your travel log (ignored by git) and the example
 
 The data API has no authentication: it only listens on `localhost`, so don't start the app with `--host` on a
 network you don't trust.
+
+### The demo on GitHub Pages
+
+GitHub Pages can only serve files, so the demo is a separate build (`npm run build:demo`, switched on by
+[`.env.demo`](.env.demo)): it starts with the example data and saves changes in the visitor's browser
+(localStorage) instead of a file, with a banner that says so and a button to reset to the example.
+
+The workflow [`.github/workflows/pages.yml`](.github/workflows/pages.yml) runs the tests, builds the demo for the
+repository's Pages address and deploys it on every push to `main` (or by hand from the *Actions* tab). To use it
+in your own copy, set *Settings → Pages → Build and deployment → Source* to **GitHub Actions** once.

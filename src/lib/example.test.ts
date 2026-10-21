@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { exampleData } from './example';
+import { exampleData } from './store';
 import { createAirportLookup, isCountryCode } from './reference';
 import { computeStats } from './stats';
 

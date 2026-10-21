@@ -1,0 +1,57 @@
+# Builds the demo (example data, changes kept in the visitor's browser) and publishes it on GitHub Pages.
+# One-time setup: Settings → Pages → Build and deployment → Source: "GitHub Actions".
+name: Deploy demo to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deployment at a time; a newer push doesn't cancel one that's already deploying.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm test
+
+      - id: pages
+        uses: actions/configure-pages@v6
+
+      - name: Build the demo
+        run: npm run build:demo
+        env:
+          # e.g. "/travel-log/" for https://<user>.github.io/travel-log/
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}/
+          VITE_REPO_URL: ${{ github.server_url }}/${{ github.repository }}
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

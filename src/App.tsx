@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { exampleData } from './lib/example';
 import { createAirportLookup } from './lib/reference';
 import { computeStats } from './lib/stats';
-import { useTravelData } from './lib/store';
+import { DEMO, exampleData, useTravelData } from './lib/store';
 import type { Selection, TravelData } from './types';
 import { EditView } from './views/EditView';
 import { ExploreView } from './views/ExploreView';
@@ -112,6 +111,24 @@ export function App() {
             </a>
           ))}
         </nav>
+        {DEMO && (
+          <p className="demo-banner">
+            Demo with example data — your changes stay in this browser.{' '}
+            <button
+              type="button"
+              className="link"
+              onClick={() => window.confirm('Reset the demo to the example data?') && save(exampleData())}
+            >
+              Reset
+            </button>
+            {import.meta.env.VITE_REPO_URL && (
+              <>
+                {' · '}
+                <a href={import.meta.env.VITE_REPO_URL}>Get the app</a>
+              </>
+            )}
+          </p>
+        )}
       </header>
       <main className={`app-main view-${view}`}>
         {view === 'explore' && (
