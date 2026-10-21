@@ -58,7 +58,10 @@ the *Countries over time* chart on a real time axis; undated trips are placed be
 
 ### Kinds of trips
 
-- **Flights** — the default. Every connection is a flight, drawn as a magenta arc.
+- **Flights** — the default. Every connection is a flight, drawn as a magenta arc. Put the codes of a part you
+  travelled without flying in parentheses: `(RVN-ALF)-OSL` means RVN to ALF by train, bus, car or boat, then a
+  flight from ALF to OSL, and `(RVN-ALF)` alone on a line is a whole leg without flying. These parts count like a
+  no-flight trip and are drawn as green lines.
 - **No flight** — trips by train, bus, car or boat. Use the nearest airport codes to mark the places. They count
   for countries, not for flights, airports or distance flown, and are drawn as green lines. Their way out of and
   back into your home country isn't drawn by default (it clutters the map); switch on *Home routes* to see it.
@@ -87,7 +90,7 @@ add the other places you visited (e.g. Hong Kong, Kosovo) to both the count and 
 
 ## Using the app
 
-**Map.** The routes menu shows *All routes*, only *Flights*, only trips with *No flights*, or *No routes* (just the
+**Map.** The routes menu shows *All routes*, only *Flights*, only travel with *No flights*, or *No routes* (just the
 places you've been to). *Show* filters the map to one trip and zooms to it. Click a flight, airport or country for
 details; use ← / → to step through your flights in order; ✎ opens a trip in the editor.
 
@@ -105,7 +108,7 @@ shows all trips as one text (handy for pasting a whole history). Save with the b
 ### Text format
 
 In *Text* mode, each trip starts with `# Name`, followed by optional markers, then one leg per line. Codes can be
-separated by `-`, `>`, `→`, commas or spaces.
+separated by `-`, `>`, `→`, commas or spaces; codes in parentheses were travelled without flying.
 
 ```text
 # Thailand (Q1 2018)
@@ -122,6 +125,10 @@ FRA-BCN
 AD
 BCN-FRA
 
+# Lisbon and Porto (Q4 2023)
+FRA-LIS
+(LIS-OPO)-FRA
+
 # Japan (Q2 2027) (planned)
 FRA-HEL-NRT
 KIX-HEL-FRA
@@ -136,7 +143,7 @@ end up in the repository. You can also edit the file by hand while the app isn't
 
 | Field | Meaning |
 | --- | --- |
-| `trips` | Oldest first. Each has an `id`, a `name`, `legs` (lists of codes), and optionally `date` (`"2019"` or `"2019-Q3"`), `noFlight: true` and `planned: true`. |
+| `trips` | Oldest first. Each has an `id`, a `name`, `legs` (lists of codes; a list inside a leg is travelled without flying, e.g. `[["LIS", "OPO"], "FRA"]`), and optionally `date` (`"2019"` or `"2019-Q3"`), `noFlight: true` and `planned: true`. |
 | `extraCountries` | Countries visited outside your trips (2-letter codes). |
 | `extraCities` | Cities visited outside your trips: `name`, `country`, `lat`, `lon`. |
 | `customAirports` | Codes the bundled database doesn't know, e.g. `"XYZ": { "name": "…", "city": "…", "country": "DE", "lat": 50.1, "lon": 8.6 }`. |

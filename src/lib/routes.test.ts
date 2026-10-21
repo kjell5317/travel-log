@@ -48,4 +48,10 @@ describe('surfaceLayer', () => {
     expect(stops.map((s) => s.place.code)).not.toContain('HAM');
     expect(stops.map((s) => s.place.code)).toContain('DE');
   });
+
+  it('always draws kept hops (travel without flying in flight trips)', () => {
+    const { segments, stops } = surfaceLayer([], 'NO', new Set(['ALF']), [hops(['RVN', 'ALF'])]);
+    expect(segments.map((s) => s.key)).toEqual(['ALF-RVN']);
+    expect(stops.map((s) => s.place.code)).toEqual(['RVN']);
+  });
 });

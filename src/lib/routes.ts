@@ -1,6 +1,6 @@
 import type { Airport, CountryCode } from '../types';
 
-/** One step of a no-flight trip, between two consecutive places. */
+/** One step travelled without flying, between two consecutive places. */
 export type Hop = { a: Airport | undefined; b: Airport | undefined; planned: boolean };
 
 /**
@@ -38,14 +38,14 @@ export interface SurfaceStop {
 
 /**
  * Lines and dots for no-flight trips (one list of hops per trip). The way out of / back into the home
- * country gets no line, but its cities still get a dot. Places in `skip` (already drawn as airports)
- * get no dot. Lines and dots count as planned only when every trip through them is planned.
+ * country gets no line, but its cities still get a dot. `kept` hops (travel without flying inside flight
+ * trips) are always drawn. Places in `skip` (already drawn as airports) get no dot. Lines and dots count
+ * as planned only when every trip through them is planned.
  */
-export function surfaceLayer(trips: Hop[][], home: CountryCode | undefined, skip: Set<string>) {
+export function surfaceLayer(trips: Hop[][], home: CountryCode | undefined, skip: Set<string>, kept: Hop[][] = []) {
   const segments = new Map<string, SurfaceSegment>();
   const stops = new Map<string, SurfaceStop>();
-  for (const hops of trips) {
-    const drawn = new Set(home ? withoutHomeConnections(hops, home) : hops);
+  const add = (hops: Hop[], drawn: Set<Hop>) => {
     for (const hop of hops) {
       const { a, b, planned } = hop;
       for (const p of [a, b]) {
@@ -58,6 +58,8 @@ export function surfaceLayer(trips: Hop[][], home: CountryCode | undefined, skip
       const key = [a.code, b.code].sort().join('-');
       segments.set(key, { key, a, b, planned: planned && (segments.get(key)?.planned ?? true) });
     }
-  }
+  };
+  for (const hops of trips) add(hops, new Set(home ? withoutHomeConnections(hops, home) : hops));
+  for (const hops of kept) add(hops, new Set(hops));
   return { segments: [...segments.values()], stops: [...stops.values()] };
 }

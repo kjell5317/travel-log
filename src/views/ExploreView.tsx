@@ -3,7 +3,7 @@ import { WorldMap } from '../components/WorldMap';
 import { formatTripDate } from '../lib/dates';
 import { fmtInt, fmtKm, fmtPct, plural } from '../lib/format';
 import { CONTINENTS, countryByCode, countryName } from '../lib/reference';
-import { coverage, flightPosition, splitAtCountries, visitStatus, type TravelStats } from '../lib/stats';
+import { coverage, flightPosition, splitLeg, visitStatus, type TravelStats } from '../lib/stats';
 import type { CountryCode, IATA, Selection, TravelData } from '../types';
 
 interface Props {
@@ -225,7 +225,7 @@ function FlightList({
   );
 }
 
-/** The legs of a flight trip: flights to click, plus any connections to country codes (no flight). */
+/** The legs of a flight trip: flights to click, plus any travel without flying (and connections to country codes). */
 function FlightTripLegs({
   stats,
   trip,
@@ -239,20 +239,20 @@ function FlightTripLegs({
   selectedRef: React.RefObject<HTMLButtonElement | null>;
   onSelect: (s: Selection) => void;
 }) {
-  // Flown parts appear in stats.legs in the same order splitAtCountries yields them.
+  // Flown parts appear in stats.legs in the same order splitLeg yields them.
   const flown = stats.legs.filter((leg) => leg.tripIndex === trip.index);
   let next = 0;
   return (
     <>
-      {trip.trip.legs.map((codes, legIndex) => (
+      {trip.trip.legs.map((stops, legIndex) => (
         <div key={legIndex} className="flight-list-leg">
           <span className="leg-label">Leg {legIndex + 1}</span>
-          {splitAtCountries(codes).map((part, k) => {
-            if (part.ground) {
+          {splitLeg(stops).map((part, k) => {
+            if (part.kind !== 'flown') {
               return (
                 <span key={k} className="surface-row">
                   {part.codes.join(' → ')}
-                  {part.codes.length === 1 && <span className="muted"> · visited</span>}
+                  <span className="muted"> · {part.codes.length === 1 ? 'visited' : 'no flight'}</span>
                 </span>
               );
             }

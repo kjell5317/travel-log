@@ -67,11 +67,22 @@ function readBody(req: IncomingMessage): Promise<string> {
   });
 }
 
-/** Pretty-prints the data but keeps arrays of codes (legs, countries) on one line. */
+const isCode = (value: unknown) => typeof value === 'string' && /^[A-Z0-9]{2,3}$/.test(value);
+const isCodes = (value: unknown) => Array.isArray(value) && value.length > 0 && value.every(isCode);
+
+/** Pretty-prints the data but keeps lists of codes (each leg, with its groups, and countries) on one line. */
 export function formatData(data: unknown): string {
-  return (
-    JSON.stringify(data, null, 2).replace(/\[\s+("[A-Z0-9]{2,3}"(?:,\s+"[A-Z0-9]{2,3}")*)\s+\]/g, (_, items: string) =>
-      `[${items.split(/,\s+/).join(', ')}]`,
-    ) + '\n'
+  const inline: string[] = [];
+  const oneLine = (value: unknown) => `\0${inline.push(JSON.stringify(value).replaceAll(',', ', ')) - 1}`;
+  const json = JSON.stringify(
+    data,
+    (key, value) => {
+      if (key === 'legs' && Array.isArray(value)) {
+        return value.map((leg) => (Array.isArray(leg) && leg.length > 0 && leg.every((stop) => isCode(stop) || isCodes(stop)) ? oneLine(leg) : leg));
+      }
+      return isCodes(value) ? oneLine(value) : value;
+    },
+    2,
   );
+  return json.replace(/"\\u0000(\d+)"/g, (_, i: string) => inline[Number(i)]) + '\n';
 }

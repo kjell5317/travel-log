@@ -1264,6 +1264,9 @@ table + table {
 .leg-preview .arrow {
   color: var(--muted);
 }
+.leg-preview .arrow-surface {
+  color: var(--surface-route);
+}
 .leg-preview .unknown {
   color: var(--critical);
   font-weight: 600;

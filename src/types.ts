@@ -4,14 +4,20 @@ export type IATA = string;
 export type CountryCode = string;
 
 /**
+ * A place in a leg: a code, or a group of codes you travelled between without flying.
+ * E.g. the leg [["RVN", "ALF"], "OSL"] is RVN to ALF by train, bus, car or boat, then a flight ALF → OSL.
+ */
+export type Stop = IATA | IATA[];
+
+/**
  * A trip is an ordered list of legs (e.g. outbound + return).
  * A leg is an ordered list of airports you flew through without leaving the airport;
- * every consecutive pair of airports in a leg is one flight.
+ * every consecutive pair of airports in a leg is one flight, except inside a group (see Stop).
  */
 export interface Trip {
   id: string;
   name: string;
-  legs: IATA[][];
+  legs: Stop[][];
   /** Travelled by train, bus, car or boat; the IATA codes only mark the places. */
   noFlight?: boolean;
   /** Not done yet; only counted when the "future" view is on. Planned trips come after all done trips. */

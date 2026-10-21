@@ -4,9 +4,9 @@ import { fmtKm, plural } from '../lib/format';
 import { distanceKm } from '../lib/geo';
 import { formatHeading, legsToText, parseHeading, parseLegs, parseLog, type Issue } from '../lib/parse';
 import { CONTINENTS, countryByCode, searchAirports, searchCities, searchCountries, type AirportLookup, type CityResult } from '../lib/reference';
-import { computeStats, orderTrips, splitAtCountries, type TravelStats } from '../lib/stats';
+import { computeStats, orderTrips, splitLeg, type TravelStats } from '../lib/stats';
 import { DEMO, newTripId } from '../lib/store';
-import type { Country, CountryCode, ExtraCity, IATA, TravelData, Trip } from '../types';
+import type { Country, CountryCode, ExtraCity, IATA, Stop, TravelData, Trip } from '../types';
 
 interface Props {
   data: TravelData;
@@ -60,7 +60,7 @@ const toDrafts = (trips: Trip[]): DraftTrip[] =>
   }));
 const draftsToLog = (drafts: DraftTrip[]) =>
   drafts.map((d) => `${formatHeading({ ...d, date: draftDate(d).date })}\n${d.text.trim()}`).join('\n\n') + '\n';
-const tripsKey = (trips: { name: string; legs: IATA[][]; noFlight?: boolean; planned?: boolean; date?: string }[]) =>
+const tripsKey = (trips: { name: string; legs: Stop[][]; noFlight?: boolean; planned?: boolean; date?: string }[]) =>
   JSON.stringify(trips.map((t) => [t.name.trim(), t.legs, Boolean(t.noFlight), Boolean(t.planned), t.date ?? '']));
 
 /** Splits the full-log text into trips, keeping lines as typed (including invalid ones). */
@@ -259,7 +259,7 @@ export function EditView({ data, stats, lookup, active, editRequest, onSave, onL
   };
 
   const flightCount = (planned: boolean) =>
-    parsed.trips.reduce((n, t) => (t.noFlight || t.planned !== planned ? n : n + t.legs.reduce((m, leg) => m + leg.length - 1, 0)), 0);
+    parsed.trips.reduce((n, t) => (t.noFlight || t.planned !== planned ? n : n + t.legs.reduce((m, leg) => m + legFlights(leg), 0)), 0);
   const plannedTrips = parsed.trips.filter((t) => t.planned).length;
 
   const card = (d: DraftTrip, i: number) => {
@@ -334,7 +334,7 @@ export function EditView({ data, stats, lookup, active, editRequest, onSave, onL
               placeholder={
                 d.noFlight
                   ? 'One leg per line. Airport codes mark cities; 2-letter country codes put the place in the middle of a country, e.g.\nHAM-CPH-OSL\nMUC-LI-ZRH'
-                  : 'One leg per line, airports you passed without leaving, e.g.\nFRA-DXB-BKK\nBKK-DXB-FRA\nA 2-letter country code (alone or as BCN-AD) counts a country without a flight.'
+                  : 'One leg per line, airports you passed without leaving, e.g.\nFRA-DXB-BKK\nBKK-DXB-FRA\nParentheses mark travel without flying: (RVN-ALF)-OSL. A 2-letter country code (alone or as BCN-AD) counts a country without a flight.'
               }
               spellCheck={false}
               rows={Math.max(2, d.text.split('\n').length + 1)}
@@ -473,36 +473,48 @@ export function EditView({ data, stats, lookup, active, editRequest, onSave, onL
   );
 }
 
-function LegPreview({ legs, lookup, noFlight }: { legs: IATA[][]; lookup: AirportLookup; noFlight: boolean }) {
+const legFlights = (leg: Stop[]) => splitLeg(leg).reduce((n, p) => (p.kind === 'flown' ? n + p.codes.length - 1 : n), 0);
+
+function LegPreview({ legs, lookup, noFlight }: { legs: Stop[][]; lookup: AirportLookup; noFlight: boolean }) {
   if (!legs.length) return null;
   return (
     <ul className="leg-preview">
       {legs.map((leg, i) => {
-        // In flight trips only airport-to-airport connections are flights; country codes are reached otherwise.
-        const parts = noFlight ? [{ codes: leg, ground: true }] : splitAtCountries(leg);
-        const flown = parts.filter((p) => !p.ground);
+        // In flight trips only airport-to-airport connections outside parentheses are flights.
+        const codes = leg.flat();
+        const parts = splitLeg(leg, noFlight);
+        const flown = parts.filter((p) => p.kind === 'flown');
         const flights = flown.reduce((n, p) => n + p.codes.length - 1, 0);
+        // How each code after the first is reached from the one before it.
+        const reached = parts.flatMap((p) => p.codes.slice(1).map(() => p.kind));
         let km: number | null = 0;
-        for (const { codes } of noFlight ? parts : flown) {
-          for (let j = 0; j < codes.length - 1; j++) {
-            const a = lookup(codes[j]);
-            const b = lookup(codes[j + 1]);
+        for (const part of flights ? flown : parts) {
+          for (let j = 0; j < part.codes.length - 1; j++) {
+            const a = lookup(part.codes[j]);
+            const b = lookup(part.codes[j + 1]);
             km = a && b && km != null ? km + distanceKm(a, b) : null;
           }
         }
         const label =
-          leg.length === 1
+          codes.length === 1
             ? 'visited, no route'
-            : noFlight || !flights
+            : noFlight
               ? fmtKm(km)
-              : `✈️ ${plural(flights, 'flight')} · ${fmtKm(km)}${flown.length < parts.length ? ' · plus travel without flying' : ''}`;
+              : !flights
+                ? `no flight · ${fmtKm(km)}`
+                : `✈️ ${plural(flights, 'flight')} · ${fmtKm(km)}${flown.length < parts.length ? ' · plus travel without flying' : ''}`;
         return (
           <li key={i}>
-            {leg.map((code, j) => {
+            {codes.map((code, j) => {
               const a = lookup(code);
+              const withoutFlying = !noFlight && j > 0 && reached[j - 1] !== 'flown';
               return (
                 <span key={j}>
-                  {j > 0 && <span className="arrow"> → </span>}
+                  {j > 0 && (
+                    <span className={withoutFlying ? 'arrow arrow-surface' : 'arrow'} title={withoutFlying ? 'Without flying' : undefined}>
+                      {withoutFlying ? ' ⇢ ' : ' → '}
+                    </span>
+                  )}
                   <span
                     className={a ? undefined : 'unknown'}
                     title={a ? (a.type === 'K' ? `${a.name} (marked in the middle of the country)` : `${a.name}, ${countryByCode.get(a.country)?.name ?? a.country}`) : 'Unknown code'}

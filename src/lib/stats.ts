@@ -1,4 +1,4 @@
-import type { Airport, Country, CountryBasis, CountryCode, IATA, TravelData, Trip } from '../types';
+import type { Airport, Country, CountryBasis, CountryCode, IATA, Stop, TravelData, Trip } from '../types';
 import { parseTripDate, type TripDate } from './dates';
 import { plural } from './format';
 import { distanceKm } from './geo';
@@ -35,13 +35,15 @@ export interface LegInfo {
   planned: boolean;
 }
 
-/** A leg of a trip that wasn't flown (train, bus, car, boat). */
+/** A leg of a no-flight trip, or the part of a flight trip's leg that wasn't flown (train, bus, car, boat). */
 export interface SurfaceLeg {
   tripIndex: number;
   legIndex: number;
   codes: IATA[];
   /** The places the codes stand for (undefined when unknown). */
   places: (Airport | undefined)[];
+  /** Part of a no-flight trip, not of a flight trip. */
+  noFlightTrip: boolean;
   planned: boolean;
 }
 
@@ -129,22 +131,35 @@ export interface TravelStats {
 }
 
 /**
- * Splits a leg of a flight trip where it touches a country code: runs of airports are flown,
- * every connection to or from a country is ground travel. A lone country code is a ground part too.
- * E.g. FRA-BCN-AD-BCN-FRA → flown FRA-BCN, ground BCN-AD, ground AD-BCN, flown BCN-FRA.
+ * A part of a leg. flown: one or more flights. surface: travelled without flying, drawn like a no-flight trip.
+ * country: to or from a country code in a flight trip, counted but not drawn (also a lone country code).
  */
-export function splitAtCountries(codes: IATA[]): { codes: IATA[]; ground: boolean }[] {
-  if (codes.length === 1) return [{ codes, ground: true }];
-  const parts: { codes: IATA[]; ground: boolean }[] = [];
-  let run: IATA[] = [codes[0]];
+export interface LegPart {
+  codes: IATA[];
+  kind: 'flown' | 'surface' | 'country';
+}
+
+/**
+ * Splits a leg into what you flew and what you didn't. A no-flight trip's leg is one surface part. In a
+ * flight trip, a group of codes is a surface part, every connection to or from a country code is a
+ * country part, and the runs of airports in between are flown.
+ * E.g. FRA-BCN-AD-BCN-FRA → flown FRA-BCN, country BCN-AD, country AD-BCN, flown BCN-FRA;
+ * (RVN-ALF)-OSL → surface RVN-ALF, flown ALF-OSL.
+ */
+export function splitLeg(leg: Stop[], noFlight = false): LegPart[] {
+  const codes = leg.flat();
+  if (noFlight) return [{ codes, kind: 'surface' }];
+  if (codes.length === 1) return [{ codes, kind: 'country' }];
+  // Whether each code was reached from the one before it inside a group.
+  const grouped = leg.flatMap((stop) => (Array.isArray(stop) ? stop.map((_, i) => i > 0) : [false]));
+  const parts: LegPart[] = [];
   for (let i = 1; i < codes.length; i++) {
-    if (isCountryCode(codes[i - 1]) || isCountryCode(codes[i])) {
-      if (run.length > 1) parts.push({ codes: run, ground: false });
-      parts.push({ codes: [codes[i - 1], codes[i]], ground: true });
-      run = [codes[i]];
-    } else run.push(codes[i]);
+    const kind = grouped[i] ? 'surface' : isCountryCode(codes[i - 1]) || isCountryCode(codes[i]) ? 'country' : 'flown';
+    const last = parts.at(-1);
+    // Connections of the same kind make one part, except that each one to or from a country stands alone.
+    if (last?.kind === kind && kind !== 'country') last.codes.push(codes[i]);
+    else parts.push({ codes: [codes[i - 1], codes[i]], kind });
   }
-  if (run.length > 1) parts.push({ codes: run, ground: false });
   return parts;
 }
 
@@ -187,20 +202,14 @@ export function computeStats(
       firstFlight: flights.length,
     };
     const tripCountries = new Set<CountryCode>();
-    trip.legs.forEach((legCodes, legIndex) => {
-      for (const code of legCodes) if (!lookup(code)) unknown.add(code);
-      if (noFlight) {
-        addEnds(legCodes);
-        allLegs.push({ tripIndex, codes: legCodes, noFlight, planned });
-        surfaceLegs.push({ tripIndex, legIndex, codes: legCodes, places: legCodes.map(lookup), planned });
-        return;
-      }
-      // Country codes in a flight trip: count the country, but nothing there is a flight (or drawn).
-      for (const { codes, ground } of splitAtCountries(legCodes)) {
+    trip.legs.forEach((leg, legIndex) => {
+      for (const code of leg.flat()) if (!lookup(code)) unknown.add(code);
+      // Every part counts its countries; only flown parts are flights, and parts to a country code aren't drawn.
+      for (const { codes, kind } of splitLeg(leg, noFlight)) {
         addEnds(codes);
-        allLegs.push({ tripIndex, codes, noFlight: ground, planned });
-        if (ground) continue;
-        flyLeg(codes, legIndex);
+        allLegs.push({ tripIndex, codes, noFlight: kind !== 'flown', planned });
+        if (kind === 'flown') flyLeg(codes, legIndex);
+        else if (kind === 'surface') surfaceLegs.push({ tripIndex, legIndex, codes, places: codes.map(lookup), noFlightTrip: noFlight, planned });
       }
     });
     function addEnds(codes: IATA[]) {

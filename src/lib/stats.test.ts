@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { Airport } from '../types';
-import { computeStats, coverage, flightPosition, splitAtCountries } from './stats';
+import { computeStats, coverage, flightPosition, splitLeg } from './stats';
 import { createAirportLookup } from './reference';
 
 const lookup = createAirportLookup();
@@ -143,14 +143,53 @@ describe('computeStats', () => {
   });
 
   it('splits flight legs where they touch a country code', () => {
-    expect(splitAtCountries(['FRA', 'BCN', 'AD', 'BCN', 'FRA'])).toEqual([
-      { codes: ['FRA', 'BCN'], ground: false },
-      { codes: ['BCN', 'AD'], ground: true },
-      { codes: ['AD', 'BCN'], ground: true },
-      { codes: ['BCN', 'FRA'], ground: false },
+    expect(splitLeg(['FRA', 'BCN', 'AD', 'BCN', 'FRA'])).toEqual([
+      { codes: ['FRA', 'BCN'], kind: 'flown' },
+      { codes: ['BCN', 'AD'], kind: 'country' },
+      { codes: ['AD', 'BCN'], kind: 'country' },
+      { codes: ['BCN', 'FRA'], kind: 'flown' },
     ]);
-    expect(splitAtCountries(['AD'])).toEqual([{ codes: ['AD'], ground: true }]);
-    expect(splitAtCountries(['FRA', 'DXB', 'BKK'])).toEqual([{ codes: ['FRA', 'DXB', 'BKK'], ground: false }]);
+    expect(splitLeg(['AD'])).toEqual([{ codes: ['AD'], kind: 'country' }]);
+    expect(splitLeg(['FRA', 'DXB', 'BKK'])).toEqual([{ codes: ['FRA', 'DXB', 'BKK'], kind: 'flown' }]);
+  });
+
+  it('splits flight legs around groups travelled without flying', () => {
+    expect(splitLeg([['RVN', 'ALF'], 'OSL'])).toEqual([
+      { codes: ['RVN', 'ALF'], kind: 'surface' },
+      { codes: ['ALF', 'OSL'], kind: 'flown' },
+    ]);
+    expect(splitLeg(['FRA', ['MUC', 'LI', 'ZRH'], 'LHR', 'JFK'])).toEqual([
+      { codes: ['FRA', 'MUC'], kind: 'flown' },
+      { codes: ['MUC', 'LI', 'ZRH'], kind: 'surface' },
+      { codes: ['ZRH', 'LHR', 'JFK'], kind: 'flown' },
+    ]);
+    expect(splitLeg([['RVN', 'ALF']])).toEqual([{ codes: ['RVN', 'ALF'], kind: 'surface' }]);
+    expect(splitLeg([['HAM', 'CPH'], ['OSL', 'BGO']])).toEqual([
+      { codes: ['HAM', 'CPH'], kind: 'surface' },
+      { codes: ['CPH', 'OSL'], kind: 'flown' },
+      { codes: ['OSL', 'BGO'], kind: 'surface' },
+    ]);
+    // A no-flight trip's leg is one part, whatever its groups.
+    expect(splitLeg([['RVN', 'ALF'], 'OSL'], true)).toEqual([{ codes: ['RVN', 'ALF', 'OSL'], kind: 'surface' }]);
+  });
+
+  it('counts groups in flight trips like no-flight trips', () => {
+    const s = computeStats(
+      { trips: [{ id: 'a', name: 'Lapland', legs: [['OSL', 'RVN'], [['RVN', 'ALF'], 'OSL']] }], extraCountries: [] },
+      lookup,
+      { homeCountry: 'NO' },
+    );
+    expect(s.flights.map((f) => `${f.from}-${f.to}`)).toEqual(['OSL-RVN', 'ALF-OSL']);
+    expect(s.flights[1]).toMatchObject({ legIndex: 1, flightIndex: 0, legFlights: 1 });
+    expect(s.legs.map((l) => l.codes)).toEqual([['OSL', 'RVN'], ['ALF', 'OSL']]);
+    expect(s.surfaceLegs).toMatchObject([{ tripIndex: 0, legIndex: 1, codes: ['RVN', 'ALF'], noFlightTrip: false }]);
+    expect(s.airportByCode.get('RVN')).toMatchObject({ visits: 1, departures: 0, arrivals: 1 });
+    expect(s.airportByCode.get('ALF')).toMatchObject({ visits: 1, departures: 1, arrivals: 0 });
+    expect(s.countryByCode.get('FI')).toMatchObject({ kind: 'flight', arrivals: 1 });
+    expect(s.trips[0]).toMatchObject({ legs: 2, flights: 2 });
+
+    const byCar = computeStats({ trips: [{ id: 'a', name: '', legs: [['HEL', 'RVN'], [['RVN', 'ALF']]] }], extraCountries: [] }, lookup);
+    expect(byCar.countryByCode.get('NO')).toMatchObject({ kind: 'surface', arrivals: 0, airports: [] });
   });
 
   it('counts country codes in flight trips without making them flights', () => {

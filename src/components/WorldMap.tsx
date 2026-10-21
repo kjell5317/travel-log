@@ -138,7 +138,8 @@ export function WorldMap({ stats, tripFilter, selection, onSelect, showFuture, h
     const trip = stats.trips[tripFilter];
     if (!trip) return;
     overviewMode.current ??= currentMode.current;
-    setRouteModeState(trip.noFlight ? 'surface' : 'flights');
+    const partlySurface = stats.surfaceLegs.some((leg) => leg.tripIndex === tripFilter);
+    setRouteModeState(trip.noFlight ? 'surface' : partlySurface ? 'all' : 'flights');
     // Only a change of the shown trip switches the routes, not every data update.
   }, [tripFilter]);
 
@@ -183,13 +184,16 @@ export function WorldMap({ stats, tripFilter, selection, onSelect, showFuture, h
     const drawn = new Set(showAirports ? flown.airports.map((a) => a.code) : []);
     const home = stats.countries.find((c) => c.home)?.code;
     const hopsByTrip = new Map<number, Hop[]>();
+    // Travel without flying inside a flight trip isn't a way out of or back home, so it's always drawn.
+    const keptHops: Hop[][] = [];
     for (const leg of stats.surfaceLegs) {
       if (tripFilter != null && leg.tripIndex !== tripFilter) continue;
-      const hops = hopsByTrip.get(leg.tripIndex) ?? [];
+      const hops = leg.noFlightTrip ? (hopsByTrip.get(leg.tripIndex) ?? []) : [];
       for (let i = 0; i < leg.places.length - 1; i++) hops.push({ a: leg.places[i], b: leg.places[i + 1], planned: leg.planned });
-      hopsByTrip.set(leg.tripIndex, hops);
+      if (leg.noFlightTrip) hopsByTrip.set(leg.tripIndex, hops);
+      else keptHops.push(hops);
     }
-    const { segments, stops } = surfaceLayer([...hopsByTrip.values()], showHomeRoutes ? undefined : home, drawn);
+    const { segments, stops } = surfaceLayer([...hopsByTrip.values()], showHomeRoutes ? undefined : home, drawn, keptHops);
     return { ...flown, surface: segments, stops };
   }, [stats, tripFilter, showAirports, showHomeRoutes]);
 

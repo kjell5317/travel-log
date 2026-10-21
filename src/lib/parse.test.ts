@@ -50,6 +50,35 @@ describe('country codes', () => {
   });
 });
 
+describe('parentheses', () => {
+  it('group the codes travelled without flying', () => {
+    expect(parseLegs('(RVN-ALF)-OSL\n( hel rvn ) alf\nFRA-(MUC-LI-ZRH)-JFK\n(RVN-ALF)', known)).toEqual({
+      legs: [[['RVN', 'ALF'], 'OSL'], [['HEL', 'RVN'], 'ALF'], ['FRA', ['MUC', 'LI', 'ZRH'], 'JFK'], [['RVN', 'ALF']]],
+      issues: [],
+    });
+  });
+
+  it('must be closed, not nested and hold two places', () => {
+    const { legs, issues } = parseLegs('(RVN-ALF-OSL\nRVN-ALF)-OSL\n((RVN-ALF))\n(RVN)-ALF\n(RVN-ALF)-ALF', known);
+    expect(legs).toEqual([]);
+    expect(issues.map((i) => [i.line, i.severity])).toEqual([
+      [1, 'error'],
+      [2, 'error'],
+      [3, 'error'],
+      [4, 'error'],
+      [5, 'error'],
+    ]);
+  });
+
+  it('round-trip through the text format', () => {
+    const text = '# Lapland\nOSL-RVN\n(RVN-ALF)-OSL\n(TOS-ALF)\n';
+    const { trips, issues } = parseLog(text, known);
+    expect(issues).toEqual([]);
+    expect(trips[0].legs).toEqual([['OSL', 'RVN'], [['RVN', 'ALF'], 'OSL'], [['TOS', 'ALF']]]);
+    expect(logToText(trips)).toBe(text);
+  });
+});
+
 describe('parseLog', () => {
   it('splits trips on # headings and round-trips', () => {
     const text = '# Thailand\nFRA-DXB-BKK\nBKK-DXB-FRA\n\n# NYC\nFRA-JFK\nJFK-FRA\n';

@@ -26,7 +26,7 @@ export function normalizeData(raw: Partial<TravelData> | null): TravelData {
         id: t.id || `trip-${i}-${Math.random().toString(36).slice(2, 8)}`,
         name: t.name ?? '',
         ...(parseTripDate(t.date) ? { date: toDateString(parseTripDate(t.date)!) } : {}),
-        legs: (t.legs ?? []).map((leg) => leg.map((code) => code.toUpperCase())),
+        legs: (t.legs ?? []).map((leg) => leg.map((stop) => (Array.isArray(stop) ? stop.map((code) => code.toUpperCase()) : stop.toUpperCase()))),
         ...(t.noFlight ? { noFlight: true } : {}),
         ...(t.planned ? { planned: true } : {}),
       })),

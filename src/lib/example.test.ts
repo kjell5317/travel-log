@@ -16,8 +16,9 @@ describe('example data', () => {
     expect(data.trips.some((t) => t.planned)).toBe(true);
     expect(data.trips.some((t) => t.date)).toBe(true);
     expect(data.trips.some((t) => !t.date)).toBe(true);
-    expect(data.trips.some((t) => !t.noFlight && t.legs.some((leg) => leg.some(isCountryCode)))).toBe(true);
-    expect(data.trips.some((t) => t.noFlight && t.legs.some((leg) => leg.some(isCountryCode)))).toBe(true);
+    expect(data.trips.some((t) => !t.noFlight && t.legs.some((leg) => leg.flat().some(isCountryCode)))).toBe(true);
+    expect(data.trips.some((t) => t.noFlight && t.legs.some((leg) => leg.flat().some(isCountryCode)))).toBe(true);
+    expect(data.trips.some((t) => !t.noFlight && t.legs.some((leg) => leg.some(Array.isArray)))).toBe(true);
     expect(data.extraCities.length).toBeGreaterThan(0);
     expect(data.extraCountries.length).toBeGreaterThan(0);
     expect(data.settings.homeCountry).toBeTruthy();

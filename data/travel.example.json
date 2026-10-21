@@ -61,11 +61,11 @@
     },
     {
       "id": "ex-lisbon",
-      "name": "Lisbon",
+      "name": "Lisbon and Porto",
       "date": "2023-Q4",
       "legs": [
         ["FRA", "LIS"],
-        ["LIS", "FRA"]
+        [["LIS", "OPO"], "FRA"]
       ]
     },
     {
