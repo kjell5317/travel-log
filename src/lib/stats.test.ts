@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { Airport } from '../types';
-import { computeStats, coverage, flightPosition, splitLeg } from './stats';
+import { computeStats, countsAsCountry, coverage, flightPosition, splitLeg } from './stats';
 import { createAirportLookup } from './reference';
 
 const lookup = createAirportLookup();
@@ -255,5 +255,8 @@ describe('coverage', () => {
     expect(all).toMatchObject({ visited: 3, total: 197, outsideCounted: true });
     expect(all.pct).toBeCloseTo((3 / 197) * 100, 6);
     expect(all.byContinent.reduce((n, c) => n + c.total, 0)).toBe(197);
+    // Every other country figure uses countsAsCountry, so it must agree with the coverage count.
+    expect(s.countries.filter((c) => countsAsCountry(c.code, 'un+observers')).length).toBe(un.visited);
+    expect(s.countries.filter((c) => countsAsCountry(c.code, 'un+observers+visited')).length).toBe(all.visited);
   });
 });

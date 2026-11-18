@@ -388,6 +388,15 @@ export function visitStatus(stat: CountryStat | undefined): string {
 }
 
 const UN_AND_OBSERVERS = countries.filter((c) => c.un || c.observer);
+const UN_AND_OBSERVER_CODES = new Set(UN_AND_OBSERVERS.map((c) => c.code));
+
+/**
+ * Whether a place counts as a country under the chosen basis: UN members and observers always, other places
+ * (e.g. Hong Kong, Kosovo) only with "Plus other places you visited". Every country figure goes by this.
+ */
+export function countsAsCountry(code: CountryCode, basis: CountryBasis): boolean {
+  return UN_AND_OBSERVER_CODES.has(code) || (basis === 'un+observers+visited' && countryByCode.has(code));
+}
 
 export const BASIS_LABELS: Record<CountryBasis, string> = {
   'un+observers': 'UN members & observers',
@@ -406,8 +415,7 @@ export interface Coverage {
 }
 
 export function coverage(visited: CountryStat[], basis: CountryBasis): Coverage {
-  const baseCodes = new Set(UN_AND_OBSERVERS.map((c) => c.code));
-  const outside = visited.filter((c) => !baseCodes.has(c.code) && c.country);
+  const outside = visited.filter((c) => !UN_AND_OBSERVER_CODES.has(c.code) && c.country);
   const outsideCounted = basis === 'un+observers+visited';
   const base = outsideCounted ? [...UN_AND_OBSERVERS, ...outside.map((c) => c.country!)] : UN_AND_OBSERVERS;
   const visitedCodes = new Set(visited.map((c) => c.code));

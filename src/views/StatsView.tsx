@@ -5,7 +5,7 @@ import { fmtCompactKm, fmtInt, fmtKm, fmtPct, fmtTimes, plural } from '../lib/fo
 import { EARTH_CIRCUMFERENCE_KM } from '../lib/geo';
 import { continentsVisited, countryGrowth, flightMix, hoursInAir, records, tripsPerCountry, type Share } from '../lib/insights';
 import { CONTINENTS, countryByCode, countryName } from '../lib/reference';
-import { BASIS_LABELS, coverage, type AirportStat, type TravelStats } from '../lib/stats';
+import { BASIS_LABELS, countsAsCountry, coverage, type AirportStat, type Coverage, type CountryStat, type TravelStats } from '../lib/stats';
 import type { CountryBasis, Selection, TravelData } from '../types';
 
 interface Props {
@@ -22,6 +22,7 @@ interface Props {
 }
 
 const fmtHours = (h: number) => (h >= 48 ? `${(h / 24).toFixed(1)} days` : `${Math.round(h)} h`);
+const placeList = (places: CountryStat[]) => places.map((c) => `${c.country?.flag ?? ''} ${c.country?.name ?? c.code}`).join(', ');
 
 export function StatsView({ data, stats, statsNow, onUpdate, onShow, showFuture, hasPlanned, onShowFuture }: Props) {
   const basis = data.settings.countryBasis;
@@ -31,15 +32,16 @@ export function StatsView({ data, stats, statsNow, onUpdate, onShow, showFuture,
   );
   const cov = covByBasis[basis];
   const covNow = useMemo(() => coverage(statsNow.countries, basis), [statsNow, basis]);
-  const growth = useMemo(() => countryGrowth(stats), [stats]);
+  const growth = useMemo(() => countryGrowth(stats, basis), [stats, basis]);
   const mix = useMemo(() => flightMix(stats), [stats]);
-  const recordItems = useMemo(() => records(stats), [stats]);
-  const topCountries = useMemo(() => tripsPerCountry(stats).slice(0, 10), [stats]);
+  const recordItems = useMemo(() => records(stats, basis), [stats, basis]);
+  const topCountries = useMemo(() => tripsPerCountry(stats, basis).slice(0, 10), [stats, basis]);
   const continents = continentsVisited(stats);
   const missingContinents = Object.keys(CONTINENTS).filter((c) => !continents.includes(c)).map((c) => CONTINENTS[c]);
   const hours = hoursInAir(stats);
   const noFlightTrips = stats.trips.filter((t) => t.noFlight).length;
-  const manualCountries = stats.countries.filter((c) => c.kind === 'manual').length;
+  const manualCountries = stats.countries.filter((c) => c.kind === 'manual' && countsAsCountry(c.code, basis)).length;
+  const aroundEarth = (s: TravelStats) => s.totalKm / EARTH_CIRCUMFERENCE_KM;
 
   const delta = (now: number, then: number, format: (n: number) => string = fmtInt) =>
     showFuture && then > now ? `+${format(then - now)} planned` : undefined;
@@ -106,7 +108,7 @@ export function StatsView({ data, stats, statsNow, onUpdate, onShow, showFuture,
         </div>
       </section>
 
-      {showFuture && <PlannedImpact stats={stats} statsNow={statsNow} covNow={covNow.pct} covFuture={cov.pct} onShow={onShow} />}
+      {showFuture && <PlannedImpact stats={stats} statsNow={statsNow} basis={basis} cov={cov} covNow={covNow} onShow={onShow} />}
 
       <section className="tiles">
         <Tile label="Flights" value={fmtInt(stats.flights.length)} sub={delta(statsNow.flights.length, stats.flights.length)} />
@@ -115,12 +117,16 @@ export function StatsView({ data, stats, statsNow, onUpdate, onShow, showFuture,
           value={fmtInt(stats.trips.length)}
           sub={delta(statsNow.trips.length, stats.trips.length) ?? (noFlightTrips ? `${noFlightTrips} without flying` : undefined)}
         />
-        <Tile label="Countries" value={fmtInt(stats.countries.length)} sub={delta(statsNow.countries.length, stats.countries.length)} />
-        <Tile label="Continents" value={`${continents.length} of 7`} sub={missingContinents.length <= 3 ? `Not yet: ${missingContinents.join(', ')}` : undefined} />
+        <Tile label="Countries" value={fmtInt(cov.visited)} sub={delta(covNow.visited, cov.visited)} />
+        <Tile
+          label="Continents"
+          value={`${continents.length} of 7`}
+          sub={delta(continentsVisited(statsNow).length, continents.length) ?? (missingContinents.length <= 3 ? `Not yet: ${missingContinents.join(', ')}` : undefined)}
+        />
         <Tile label="Airports" value={fmtInt(stats.airports.length)} sub={delta(statsNow.airports.length, stats.airports.length)} />
         <Tile label="Distance flown" value={fmtCompactKm(stats.totalKm)} sub={delta(statsNow.totalKm, stats.totalKm, fmtCompactKm)} />
-        <Tile label="Time in the air" value={`≈ ${fmtHours(hours)}`} sub="estimated" />
-        <Tile label="Around the Earth" value={fmtTimes(stats.totalKm / EARTH_CIRCUMFERENCE_KM)} />
+        <Tile label="Time in the air" value={`≈ ${fmtHours(hours)}`} sub={['estimated', delta(hoursInAir(statsNow), hours, fmtHours)].filter(Boolean).join(' · ')} />
+        <Tile label="Around the Earth" value={fmtTimes(aroundEarth(stats))} sub={delta(aroundEarth(statsNow), aroundEarth(stats), fmtTimes)} />
       </section>
 
       <section className="card">
@@ -168,7 +174,7 @@ export function StatsView({ data, stats, statsNow, onUpdate, onShow, showFuture,
           />
         </section>
 
-        <ContinentList stats={stats} onShow={onShow} />
+        <ContinentList stats={stats} basis={basis} onShow={onShow} />
         <AirportsTable stats={stats} onShow={onShow} />
       </div>
     </div>
@@ -203,17 +209,21 @@ function MixBars({ shares }: { shares: Share[] }) {
 function PlannedImpact({
   stats,
   statsNow,
+  basis,
+  cov,
   covNow,
-  covFuture,
   onShow,
 }: {
   stats: TravelStats;
   statsNow: TravelStats;
-  covNow: number;
-  covFuture: number;
+  basis: CountryBasis;
+  cov: Coverage;
+  covNow: Coverage;
   onShow: (s: Selection) => void;
 }) {
-  const newCountries = stats.countries.filter((c) => c.planned);
+  const newPlaces = stats.countries.filter((c) => c.planned);
+  const newCountries = newPlaces.filter((c) => countsAsCountry(c.code, basis));
+  const newOther = newPlaces.filter((c) => !countsAsCountry(c.code, basis));
   const newAirports = stats.airports.filter((a) => a.planned).length;
   const plannedTrips = stats.trips.filter((t) => t.planned);
   return (
@@ -225,13 +235,13 @@ function PlannedImpact({
         <div>
           <span>Share of the world</span>
           <strong>
-            {fmtPct(covNow)} → {fmtPct(covFuture)}
+            {fmtPct(covNow.pct)} → {fmtPct(cov.pct)}
           </strong>
         </div>
         <div>
           <span>Countries</span>
           <strong>
-            {statsNow.countries.length} → {stats.countries.length}
+            {fmtInt(covNow.visited)} → {fmtInt(cov.visited)}
           </strong>
         </div>
         <div>
@@ -247,7 +257,7 @@ function PlannedImpact({
           <strong>+{fmtInt(newAirports)}</strong>
         </div>
       </div>
-      {newCountries.length > 0 ? (
+      {newCountries.length > 0 && (
         <div className="chips">
           {newCountries.map((c) => (
             <button key={c.code} type="button" className="chip chip-planned" onClick={() => onShow({ kind: 'country', code: c.code })}>
@@ -255,16 +265,18 @@ function PlannedImpact({
             </button>
           ))}
         </div>
-      ) : (
-        <p className="muted small">No new countries — your planned trips only go to places you’ve been.</p>
       )}
+      {newOther.length > 0 && <p className="muted small">Also new, not counted as countries: {placeList(newOther)}</p>}
+      {newPlaces.length === 0 && <p className="muted small">No new countries — your planned trips only go to places you’ve been.</p>}
     </section>
   );
 }
 
-function ContinentList({ stats, onShow }: { stats: TravelStats; onShow: (s: Selection) => void }) {
+function ContinentList({ stats, basis, onShow }: { stats: TravelStats; basis: CountryBasis; onShow: (s: Selection) => void }) {
+  const counted = stats.countries.filter((c) => countsAsCountry(c.code, basis));
+  const other = stats.countries.filter((c) => !countsAsCountry(c.code, basis));
   const groups = Object.entries(CONTINENTS)
-    .map(([code, name]) => ({ code, name, countries: stats.countries.filter((c) => c.country?.continent === code) }))
+    .map(([code, name]) => ({ code, name, countries: counted.filter((c) => c.country?.continent === code) }))
     .filter((g) => g.countries.length);
   return (
     <section className="card">
@@ -289,6 +301,7 @@ function ContinentList({ stats, onShow }: { stats: TravelStats; onShow: (s: Sele
           </div>
         </div>
       ))}
+      {other.length > 0 && <p className="muted small">Also visited, not counted as countries: {placeList(other)}</p>}
       {stats.transitOnly.length > 0 && (
         <p className="muted small">Transit only: {stats.transitOnly.map((c) => `${c.country?.flag ?? ''} ${countryName(c.code)}`).join(', ')}</p>
       )}

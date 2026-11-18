@@ -23,12 +23,12 @@ describe('insights', () => {
   });
 
   it('tracks countries added per trip', () => {
-    expect(countryGrowth(stats).map((p) => [p.total, p.added])).toEqual([
+    expect(countryGrowth(stats, 'un+observers').map((p) => [p.total, p.added])).toEqual([
       [1, ['DE']],
       [2, ['TH']],
       [3, ['AT']],
     ]);
-    expect(tripsPerCountry(stats)[0]).toEqual({ code: 'DE', trips: 3 });
+    expect(tripsPerCountry(stats, 'un+observers')[0]).toEqual({ code: 'DE', trips: 3 });
   });
 
   it('starts the count with the home country', () => {
@@ -43,10 +43,36 @@ describe('insights', () => {
       createAirportLookup(),
       { homeCountry: 'DE' },
     );
-    expect(countryGrowth(withHome).map((p) => [p.total, p.added])).toEqual([
+    expect(countryGrowth(withHome, 'un+observers').map((p) => [p.total, p.added])).toEqual([
       [1, []],
       [2, ['TH']],
     ]);
+  });
+
+  it('counts only the countries of the chosen basis', () => {
+    const s = computeStats(
+      {
+        trips: [
+          { id: 'a', name: 'Asia', legs: [['FRA', 'HKG'], ['HKG', 'BKK'], ['BKK', 'FRA']] },
+          { id: 'b', name: 'Kosovo', legs: [['FRA', 'PRN'], ['PRN', 'FRA']] },
+        ],
+        extraCountries: [],
+      },
+      createAirportLookup(),
+    );
+    expect(countryGrowth(s, 'un+observers').map((p) => [p.total, p.added.sort()])).toEqual([
+      [2, ['DE', 'TH']],
+      [2, []],
+    ]);
+    expect(countryGrowth(s, 'un+observers+visited').map((p) => [p.total, p.added.sort()])).toEqual([
+      [3, ['DE', 'HK', 'TH']],
+      [4, ['XK']],
+    ]);
+    expect(tripsPerCountry(s, 'un+observers').map((c) => c.code)).toEqual(['DE', 'TH']);
+    expect(tripsPerCountry(s, 'un+observers+visited').map((c) => c.code)).toEqual(['DE', 'HK', 'XK', 'TH']);
+    const widest = (basis: 'un+observers' | 'un+observers+visited') => records(s, basis).find((r) => r.label === 'Most countries in one trip');
+    expect(widest('un+observers')).toBeUndefined();
+    expect(widest('un+observers+visited')).toMatchObject({ value: '3', detail: 'Asia' });
   });
 
   it('places trips on a time axis when some have dates', () => {
@@ -65,7 +91,7 @@ describe('insights', () => {
       createAirportLookup(),
       { includePlanned: true },
     );
-    const points = countryGrowth(dated, 2020.5);
+    const points = countryGrowth(dated, 'un+observers', 2020.5);
     expect(points.map((p) => p.estimated)).toEqual([false, true, false, false, true, true]);
     const [a, b, c, d, e, p] = points.map((pt) => pt.time!);
     expect(a).toBeCloseTo(2018.125);
@@ -74,7 +100,7 @@ describe('insights', () => {
     expect(d).toBeCloseTo(2019.125); // dated before C although it came after: moved up
     expect(e).toBeCloseTo(2019.375); // one quarter after the last dated trip
     expect(p).toBeGreaterThan(2020.5); // planned and undated: after today
-    expect(countryGrowth(stats).every((pt) => pt.time === null)).toBe(true);
+    expect(countryGrowth(stats, 'un+observers').every((pt) => pt.time === null)).toBe(true);
   });
 
   it('estimates time in the air', () => {
@@ -83,7 +109,7 @@ describe('insights', () => {
   });
 
   it('finds records and extremes', () => {
-    const byLabel = Object.fromEntries(records(stats).map((r) => [r.label, r]));
+    const byLabel = Object.fromEntries(records(stats, 'un+observers').map((r) => [r.label, r]));
     expect(byLabel['Most flights in one leg'].detail).toBe('HAM → DXB → BKK');
     expect(byLabel['Northernmost'].detail).toContain('HAM');
     expect(byLabel['Southernmost'].detail).toContain('BKK');

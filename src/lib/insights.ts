@@ -1,9 +1,9 @@
-import type { Airport, CountryCode, Selection } from '../types';
+import type { Airport, CountryBasis, CountryCode, Selection } from '../types';
 import { dateValue, todayValue } from './dates';
 import { fmtInt, fmtKm, plural } from './format';
 import { distanceKm } from './geo';
 import { CONTINENTS, countryByCode } from './reference';
-import type { TravelStats, TripStat } from './stats';
+import { countsAsCountry, type TravelStats, type TripStat } from './stats';
 
 /** Rough block time: cruise at ~800 km/h plus half an hour for taxi, climb and descent. */
 const CRUISE_KMH = 800;
@@ -53,8 +53,9 @@ export function flightMix(stats: TravelStats): { where: Share[]; distance: Share
 
 export interface GrowthPoint {
   trip: TripStat;
-  /** Countries visited after this trip (trip countries only, not ones added by hand). */
+  /** Countries visited after this trip (trip countries only, not ones added by hand), as counted by the basis. */
   total: number;
+  /** Countries this trip added that count under the basis. */
   added: CountryCode[];
   /** Position in years (e.g. 2019.625), or null when no trip has a date. */
   time: number | null;
@@ -69,9 +70,10 @@ const UNDATED_STEP = 0.25;
  * Countries visited after each trip. Dated trips sit in their quarter; undated ones are spread
  * evenly between the dated trips around them, done trips never after today and planned ones never before.
  */
-export function countryGrowth(stats: TravelStats, today = todayValue()): GrowthPoint[] {
+export function countryGrowth(stats: TravelStats, basis: CountryBasis, today = todayValue()): GrowthPoint[] {
+  const counts = (code: CountryCode) => countsAsCountry(code, basis);
   // The home country counts before the first trip.
-  const home = stats.countries.filter((c) => c.home).length;
+  const home = stats.countries.filter((c) => c.home && counts(c.code)).length;
   const known = stats.trips.map((t) => (t.date ? dateValue(t.date) : null));
   // Trips are in order, so a date earlier than a previous trip's is moved up to it.
   let latest = -Infinity;
@@ -84,7 +86,8 @@ export function countryGrowth(stats: TravelStats, today = todayValue()): GrowthP
   let previousTime = -Infinity;
   let plannedRank = 0;
   return stats.trips.map((trip, i) => {
-    total += trip.newCountries.length;
+    const added = trip.newCountries.filter(counts);
+    total += added.length;
     let time: number | null = null;
     if (anchors.length) {
       if (known[i] != null) time = known[i];
@@ -100,7 +103,7 @@ export function countryGrowth(stats: TravelStats, today = todayValue()): GrowthP
       time = previousTime = Math.max(time, previousTime);
     }
     if (trip.planned) plannedRank++;
-    return { trip, total, added: trip.newCountries, time, estimated: known[i] == null };
+    return { trip, total, added, time, estimated: known[i] == null };
   });
 }
 
@@ -110,10 +113,10 @@ export function continentsVisited(stats: TravelStats): string[] {
   return Object.keys(CONTINENTS).filter((c) => visited.has(c));
 }
 
-/** Countries ranked by how many trips started or ended there. */
-export function tripsPerCountry(stats: TravelStats): { code: CountryCode; trips: number }[] {
+/** Countries (that count under the basis) ranked by how many trips started or ended there. */
+export function tripsPerCountry(stats: TravelStats, basis: CountryBasis): { code: CountryCode; trips: number }[] {
   const counts = new Map<CountryCode, number>();
-  for (const t of stats.trips) for (const c of t.countries) counts.set(c, (counts.get(c) ?? 0) + 1);
+  for (const t of stats.trips) for (const c of t.countries) if (countsAsCountry(c, basis)) counts.set(c, (counts.get(c) ?? 0) + 1);
   return [...counts.entries()]
     .map(([code, trips]) => ({ code, trips }))
     .sort((a, b) => b.trips - a.trips || (countryByCode.get(a.code)?.name ?? a.code).localeCompare(countryByCode.get(b.code)?.name ?? b.code));
@@ -129,7 +132,7 @@ export interface RecordItem {
 const placeName = (a: Airport) => `${a.code} · ${a.city || a.name}, ${countryByCode.get(a.country)?.name ?? a.country}`;
 const degrees = (value: number, pos: string, neg: string) => `${Math.abs(value).toFixed(1)}° ${value >= 0 ? pos : neg}`;
 
-export function records(stats: TravelStats): RecordItem[] {
+export function records(stats: TravelStats, basis: CountryBasis): RecordItem[] {
   const items: RecordItem[] = [];
   const measured = stats.flights.filter((f) => f.km != null);
   if (measured.length) {
@@ -145,9 +148,11 @@ export function records(stats: TravelStats): RecordItem[] {
     items.push({ label: 'Longest trip', value: fmtKm(farthest.km), detail: farthest.trip.name || `Trip ${farthest.index + 1}` });
   }
   // Every there-and-back trip touches two countries, so this is only a record from three on.
-  const widest = stats.trips.reduce<TripStat | null>((a, b) => (!a || b.countries.length > a.countries.length ? b : a), null);
-  if (widest && widest.countries.length >= 3) {
-    items.push({ label: 'Most countries in one trip', value: fmtInt(widest.countries.length), detail: widest.trip.name || `Trip ${widest.index + 1}` });
+  const widest = stats.trips
+    .map((trip) => ({ trip, count: trip.countries.filter((c) => countsAsCountry(c, basis)).length }))
+    .reduce<{ trip: TripStat; count: number } | null>((a, b) => (!a || b.count > a.count ? b : a), null);
+  if (widest && widest.count >= 3) {
+    items.push({ label: 'Most countries in one trip', value: fmtInt(widest.count), detail: widest.trip.trip.name || `Trip ${widest.trip.index + 1}` });
   }
   if (stats.legs.length) {
     const longestLeg = stats.legs.reduce((a, b) => (b.codes.length > a.codes.length ? b : a));
