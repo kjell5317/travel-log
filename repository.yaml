@@ -1,0 +1,4 @@
+# Makes this repository installable in Home Assistant: Settings → Apps → Install app → ⋮ → Repositories.
+# The app itself is described in config.yaml.
+name: Travel log
+url: https://github.com/kjell5317/travel-log

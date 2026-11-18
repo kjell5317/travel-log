@@ -6,8 +6,9 @@ import { travelDataApi } from './server/dataApi.ts';
 const dataDir = path.resolve(import.meta.dirname, 'data');
 
 export default defineConfig({
-  // GitHub Pages serves a project site under /<repository>/; the deploy workflow sets BASE_PATH.
-  base: process.env.BASE_PATH || '/',
+  // Relative asset URLs, so the build works under any path: Home Assistant serves it under
+  // /api/hassio_ingress/<token>/. The GitHub Pages workflow sets BASE_PATH to the project site's path.
+  base: process.env.BASE_PATH || './',
   plugins: [react(), travelDataApi(dataDir)],
   server: {
     port: 5317,

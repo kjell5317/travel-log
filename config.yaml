@@ -1,0 +1,24 @@
+# Home Assistant app (formerly "add-on"): Home Assistant builds the Dockerfile next to this file on your device.
+# Raise the version for every change that Home Assistant should offer as an update.
+# Reference: https://contributors.home-assistant.io/apps/reference/configuration/
+name: Travel log
+version: "1.0.0"
+slug: travel_log
+description: Your trips on a world map, with travel statistics
+url: https://github.com/kjell5317/travel-log
+arch:
+  - aarch64
+  - amd64
+# Served on a port of the Home Assistant host, so a reverse proxy can reach it (ingress only works inside Home
+# Assistant's own UI). There is no login: anyone who can reach the port can see and change the travel log.
+# The host port can be changed or switched off on the app's Configuration tab.
+ports:
+  8099/tcp: 8099
+ports_description:
+  8099/tcp: Web interface (no login)
+webui: http://[HOST]:[PORT:8099]/
+# The travel log (travel.json) lives in the app's config folder: /config inside the app, and a folder ending in
+# "_travel_log" under app_configs on the host, where Samba or a file editor can reach it. It's part of backups.
+map:
+  - type: app_config
+    read_only: false

@@ -53,6 +53,8 @@ export function exampleData(): TravelData {
  * with the example and keeps changes in this browser only.
  */
 export const DEMO = import.meta.env.VITE_DEMO === 'true';
+// Relative to the page, so it also works when the app is served under a path (Home Assistant ingress).
+const API_URL = 'api/data';
 const DEMO_KEY = 'travel.demo';
 
 function readDemoData(): TravelData {
@@ -78,7 +80,7 @@ export function useTravelData() {
       setData(readDemoData());
       return;
     }
-    fetch('/api/data')
+    fetch(API_URL)
       .then((res) => {
         if (!res.ok) throw new Error(`Loading data failed (${res.status})`);
         return res.json();
@@ -97,7 +99,7 @@ export function useTravelData() {
       setData(next);
       return;
     }
-    const res = await fetch('/api/data', {
+    const res = await fetch(API_URL, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(next),

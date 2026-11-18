@@ -1,18 +1,32 @@
 import { mkdir, readFile, rename, writeFile, copyFile } from 'node:fs/promises';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import path from 'node:path';
-import type { Connect, Plugin } from 'vite';
+import type { Plugin } from 'vite';
+
+/** The travel log API for the dev and preview servers (see createDataHandler). */
+export function travelDataApi(dataDir: string): Plugin {
+  const handler = createDataHandler(dataDir);
+  return {
+    name: 'travel-data-api',
+    configureServer(server) {
+      server.middlewares.use(handler);
+    },
+    configurePreviewServer(server) {
+      server.middlewares.use(handler);
+    },
+  };
+}
 
 /**
- * Serves the travel log stored in data/travel.json:
+ * Serves the travel log stored in <dataDir>/travel.json and passes every other request on:
  *   GET /api/data  -> current file (or an empty log)
  *   PUT /api/data  -> replaces the file (previous version kept as travel.backup.json)
  */
-export function travelDataApi(dataDir: string): Plugin {
+export function createDataHandler(dataDir: string) {
   const file = path.join(dataDir, 'travel.json');
   const backup = path.join(dataDir, 'travel.backup.json');
 
-  const handler: Connect.NextHandleFunction = async (req, res, next) => {
+  return async (req: IncomingMessage, res: ServerResponse, next: () => void) => {
     if (req.url?.split('?')[0] !== '/api/data') return next();
     try {
       if (req.method === 'GET') {
@@ -38,16 +52,6 @@ export function travelDataApi(dataDir: string): Plugin {
     } catch (err) {
       send(res, 500, JSON.stringify({ error: String(err) }));
     }
-  };
-
-  return {
-    name: 'travel-data-api',
-    configureServer(server) {
-      server.middlewares.use(handler);
-    },
-    configurePreviewServer(server) {
-      server.middlewares.use(handler);
-    },
   };
 }
 

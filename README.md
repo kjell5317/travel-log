@@ -37,6 +37,24 @@ npm start          # opens http://localhost:5317
 The app starts empty. To look around first, click **Load example** on the map page (or run `npm run example`
 before `npm start`). To start over with your own trips, delete `data/travel.json`.
 
+### On Home Assistant
+
+This repository is also a Home Assistant app repository (apps used to be called add-ons), so the travel log can
+run on your Home Assistant server, also behind your reverse proxy:
+
+1. In Home Assistant, go to **Settings → Apps → Install app**, open **⋮ → Repositories** and add
+   `https://github.com/kjell5317/travel-log`.
+2. Open **Travel log**, click **Install** (Home Assistant builds the app on your device, which takes a few
+   minutes), then **Start**. **Open web UI** opens it on port 8099 of your Home Assistant host; point your
+   reverse proxy there.
+
+The app has no login, so anyone who can reach the port can see and change your trips: before making it reachable
+from the internet, put a login in front of it in your proxy.
+
+Your trips are saved in the app's config folder: under `app_configs` in the Samba share or a file editor, in the
+folder ending in `_travel_log`. To bring an existing log along, copy your `data/travel.json` there. The app's
+*Documentation* tab ([DOCS.md](DOCS.md)) has the details.
+
 ## How it works
 
 ### Flights, legs and trips
@@ -177,11 +195,14 @@ airports labelled by a city the sources don't give (Bruges for OST) are set ther
 | `npm run typecheck`   | Type-checks the project                                          |
 | `npm run build`       | Production build; `npm run preview` serves it, including saving  |
 | `npm run build:demo`  | Static demo build for GitHub Pages (see below)                   |
+| `npm run serve`       | Production build served by plain Node 22.18+, as in Home Assistant |
 | `npm run update-data` | Downloads the sources above and rebuilds `src/data/`             |
 
 The app is React + TypeScript on [Vite](https://vite.dev/), with [d3-geo](https://github.com/d3/d3-geo) for the
-map. There is no separate backend: a small Vite middleware ([`server/dataApi.ts`](server/dataApi.ts)) reads and
-writes `data/travel.json` at `/api/data`.
+map. The data API ([`server/dataApi.ts`](server/dataApi.ts)) reads and writes `data/travel.json` at `/api/data`:
+as Vite middleware while developing, and in [`server/serve.ts`](server/serve.ts), a small Node server without
+dependencies that serves the production build (settings: `PORT`, `HOST`, `DATA_DIR`, `ALLOWED_IPS`). All URLs in
+the app are relative, so it works under any path.
 
 ```text
 src/
@@ -190,12 +211,31 @@ src/
   views/       the map, statistics and editor pages
   data/        generated reference data (see above)
 scripts/       data build and helper scripts
-server/        the local data API
+server/        the data API and the production server
 data/          your travel log (ignored by git) and the example
 ```
 
 The data API has no authentication: it only listens on `localhost`, so don't start the app with `--host` on a
-network you don't trust.
+network you don't trust. The Home Assistant app does listen on the network (port 8099 of the host), so keep it
+behind a login in your reverse proxy if it's reachable from outside.
+
+### The Home Assistant app
+
+Home Assistant builds an app from its own folder only, so the app files sit at the root of the repository:
+[`repository.yaml`](repository.yaml) makes the repository installable, [`config.yaml`](config.yaml) describes the
+app, the [`Dockerfile`](Dockerfile) builds the app and runs `server/serve.ts`, and [`DOCS.md`](DOCS.md) and
+[`icon.png`](icon.png) are its page in Home Assistant, which shows this README as the introduction. The app
+listens on port 8099 rather than using Home Assistant's ingress, which only works inside Home Assistant's own UI
+and so not behind a separate reverse proxy. It keeps `travel.json` in its config folder (`/config` inside the
+app).
+
+Home Assistant only offers an update when `version` in `config.yaml` changes, so raise it with every release.
+To try the image without Home Assistant:
+
+```sh
+docker build -t travel-log .
+docker run --rm -p 8099:8099 -v "$PWD/data:/config" travel-log   # http://localhost:8099
+```
 
 ### The demo on GitHub Pages
 
