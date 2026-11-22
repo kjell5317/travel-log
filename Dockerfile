@@ -1,7 +1,7 @@
 # The Home Assistant app (see config.yaml and DOCS.md); Home Assistant builds this image on your device.
 
 # Build the app.
-FROM node:24-alpine AS build
+FROM node:26-alpine AS build
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci --no-audit --no-fund
@@ -9,7 +9,7 @@ COPY . .
 RUN npx vite build
 
 # Serve it: plain Node, no packages needed.
-FROM node:24-alpine
+FROM node:26-alpine
 WORKDIR /app
 COPY package.json ./
 COPY server/dataApi.ts server/serve.ts ./server/
