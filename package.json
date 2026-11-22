@@ -19,11 +19,11 @@
     "example": "node scripts/use-example.mjs"
   },
   "dependencies": {
-    "d3-geo": "3.1.1",
-    "d3-selection": "3.0.0",
-    "d3-shape": "3.2.0",
-    "d3-transition": "3.0.1",
-    "d3-zoom": "3.0.0",
+    "d3-geo": "3.1.2",
+    "d3-selection": "3.0.1",
+    "d3-shape": "3.2.1",
+    "d3-transition": "3.0.2",
+    "d3-zoom": "3.0.1",
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "topojson-client": "3.1.0",
@@ -39,10 +39,10 @@
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@types/topojson-client": "3.1.5",
-    "@vitejs/plugin-react": "6.1.2",
+    "@vitejs/plugin-react": "6.3.0",
     "typescript": "7.0.2",
-    "vite": "8.3.4",
-    "vitest": "5.0.5",
+    "vite": "8.3.8",
+    "vitest": "5.1.1",
     "world-countries": "5.1.0"
   }
 }
